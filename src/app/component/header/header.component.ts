@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CarritoapiService } from 'src/app/service/carrito/carritoapi.service';
+
+
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,9 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  totalProductos:number =0;
+  constructor(private cartApi:CarritoapiService) { }
 
   ngOnInit(): void {
-  }
+    this.cartApi.getProductData().subscribe(res=>{
+      this.totalProductos = res.length;
+    })
 
+
+}
 }
