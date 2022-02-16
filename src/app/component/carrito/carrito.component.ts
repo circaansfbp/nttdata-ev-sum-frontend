@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Carrito } from 'src/app/class/carrito';
+import { Producto } from 'src/app/class/producto';
 import { CarritoapiService } from 'src/app/service/carrito/carritoapi.service';
+
 
 @Component({
   selector: 'app-carrito',
@@ -7,16 +10,17 @@ import { CarritoapiService } from 'src/app/service/carrito/carritoapi.service';
   styleUrls: ['./carrito.component.css']
 })
 export class CarritoComponent implements OnInit {
-  productos:any=[]
+  productos:Producto[]=[]
   allProductos:any=0;
   constructor(private cartApi:CarritoapiService) { }
 
   ngOnInit(): void {
     this.cartApi.getProductData().subscribe(res=>{
-      this.productos=res;
-      this.allProductos=this.cartApi.getTotal();
-      console.log(this.productos)
+      this.productos=res.productos;
+      this.allProductos=res.precioTotalProducto;
+      console.log(res)
     })
+
   }
 
   removeProduct(producto:any){
@@ -26,6 +30,10 @@ export class CarritoComponent implements OnInit {
 
   removeAllProduct(){
     this.cartApi.removeCarrito();
+  }
+  
+  saveCarrito(){
+    this.cartApi.guardarCarrito()
   }
 
 }

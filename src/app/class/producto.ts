@@ -4,4 +4,5 @@ export class Producto {
     precio: number = 0;
     categoria: string = '';
     descripcion: string = '';
+    cantidad?: number=0;
 }

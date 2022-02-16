@@ -1,4 +1,4 @@
-<ng-container *ngIf="productos.lenght !=0">
+<ng-container *ngIf="productos.length !=0">
 <div class="card-table">
     <div class="card-product">
         <table class="table table-responsive">
@@ -19,15 +19,15 @@
                     <td>{{producto.categoria}}</td>
                     <td>{{producto.cantidad}}</td>
                     <td>{{producto.precio}}</td>
-                    <td>{{producto.precio * producto.cantidad}}</td>
+                    <td>{{producto.cantidad? producto.precio * producto.cantidad:0}}</td>
                     <td><button class="btn btn-danger" (click)="removeProduct(producto)"><i class="fas fa-trash"></i></button></td>
                 </tr>
                 <tr>
                     <td colspan="4"></td>
                     <td><button (click)="removeAllProduct()"  class="btn btn-danger">Vaciar Carrito</button></td>
                     <td><button routerLink="/productos" class="btn btn-warning">Comprar más</button></td>
-                    <td><button class="btn btn-success">Pagar</button></td>
-                    <td><strong>Total: Debería estar el precio total</strong></td>
+                    <td><button (click)="saveCarrito()" class="btn btn-success">Pagar</button></td>
+                    <td><strong>Total: {{allProductos}}</strong></td>
                 </tr>
             </tbody>
         </table>
@@ -36,7 +36,7 @@
 </ng-container>
 
 
-<ng-container *ngIf="productos.lenght ==0">
+<ng-container *ngIf="productos.length==0">
 <div class="container">
     <div class="card">
         <h4 class="card-title">Carrito</h4>
