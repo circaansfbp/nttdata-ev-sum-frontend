@@ -42,9 +42,11 @@ export class ProductoComponent implements OnInit {
     this.productoService.getProductos().subscribe(res=>{
       this.productList=res;
       this.productList.forEach((a:any)=>{
-        Object.assign(a,{quantity:1, total:a.price})
-      });
-    });
+
+        Object.assign(a,{cantidad:a.cantidad, total:a.precio})
+      })
+    })
+
   }
 
   // Obtener todos los productos
@@ -93,6 +95,7 @@ export class ProductoComponent implements OnInit {
 
   // Añadir un producto al carrito
   addToCarrito(producto:any){
-    this.cartApi.addToCart(producto);
+    this.cartApi.addToCart(producto, producto.cant);
+    producto.cant=0;
   }
 }

@@ -15,6 +15,7 @@ export class CarritoComponent implements OnInit {
     this.cartApi.getProductData().subscribe(res=>{
       this.productos=res;
       this.allProductos=this.cartApi.getTotal();
+      console.log(this.productos)
     })
   }
 

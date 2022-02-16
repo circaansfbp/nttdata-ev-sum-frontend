@@ -65,6 +65,12 @@
               <td>{{ producto.categoria }}</td>
               <td>{{ producto.descripcion }}</td>
               <td>
+                <form>
+                  <div class="form-group">
+                    <input type="number" class="form-control" id="cantidadP"  [(ngModel)]="producto.cant" name="cantidad"placeholder="Ingrese Cantidad">
+                  </div>
+                </form>
+
                 <button
                   type="button"
                   role="button"
