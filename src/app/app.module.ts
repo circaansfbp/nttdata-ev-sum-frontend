@@ -12,7 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 // Pagination
 import { NgxPaginationModule } from 'ngx-pagination';
+
 import { ProductoFormComponent } from './component/producto/formulario/producto-form.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ProductoFormComponent } from './component/producto/formulario/producto-
     ProductoComponent,
     LoginComponent,
     HeaderComponent,
+
     ProductoFormComponent
+
   ],
   imports: [
     BrowserModule,

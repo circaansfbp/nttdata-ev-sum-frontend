@@ -2,18 +2,20 @@
   <div class="card">
     <div class="card-header">
       <h3 class="card-title">{{ title }}</h3>
+
       <div class="text-start">
         <a type="button" class="btn btn-primary" routerLink="/productos/form">Agregar producto</a>
       </div>
     </div>
 
     <div class="card-body">
+
       <div class="row mb-4">
         <div class="col-6 form-group">
           <label form="nombre">Filtrar por nombre:</label>
           <input type="text" [(ngModel)]="nombre" name="nombre" class="form-control">
       </div>
-  
+
       <div class="col-6">
           <label form="categoria">Filtrar por categoría:</label>
           <select class="form-select" [(ngModel)]="categoria" name="categoria">
@@ -40,7 +42,9 @@
           <tbody>
             <tr
               *ngFor="
+
                 let producto of productos 
+
                   | filter : categoria
                   | filter : nombre
                   | paginate: { itemsPerPage: 2, currentPage: p }
@@ -54,9 +58,9 @@
               <td>
                 <button
                   type="button"
-                  role="button"
                   class="btn btn-warning me-2"
-                >
+                  [routerLink]="['/productos/editar/',producto.id]"
+                  role="button" >
                   Editar
                 </button>
                 <button

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/class/producto';
 import { ProductoService } from 'src/app/service/producto/producto.service';
+
+import { Router, ActivatedRoute } from '@angular/router';
+
 import swal from 'sweetalert2';
 
 @Component({
@@ -20,7 +23,8 @@ export class ProductoComponent implements OnInit {
   categoria: string = "";
   nombre: string = "";
 
-  constructor( private productoService: ProductoService ) { }
+
+  constructor( private productoService: ProductoService, private router: Router, private activeRoute: ActivatedRoute ) { }
 
   ngOnInit(): void {
     this.getProductos();
@@ -57,5 +61,15 @@ export class ProductoComponent implements OnInit {
         this.getProductos();
       }
     });
+  }
+
+
+  updateProducto(idProducto: number): void{
+    this.productoService.updateProducto(idProducto).subscribe(
+      json => {
+        this.router.navigate(['/producto'])
+        swal.fire('Producto actualizado',`El producto ${json.productos.nombre} fue actualizado`, 'success')
+      }
+    )
   }
 }
