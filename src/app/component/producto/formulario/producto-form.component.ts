@@ -32,4 +32,17 @@ export class ProductoFormComponent implements OnInit {
       }
     )
   }
+
+  public getProducto(): void{
+    console.log(this.productoService.getProducto(1));
+  }
+
+  public updateProducto(idProducto: number){
+    this.productoService.updateProducto(idProducto).subscribe(
+      json => {
+        this.router.navigate(['/editar'])
+        swal.fire('Producto actualizado',`Producto ${json.producto.nombre} actualizado`, 'success')
+      }
+    )
+  }
 }

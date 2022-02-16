@@ -8,8 +8,8 @@ import { ProductoComponent } from './component/producto/producto.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'productos', component: ProductoComponent },
-  { path: 'productos/editar/:id', component: FormularioComponent }
-  { path: 'productos/form', component: ProductoFormComponent }
+  { path: 'productos/form', component: ProductoFormComponent },
+  { path: 'productos/editar/:id', component: ProductoFormComponent }
 
 ];
 
