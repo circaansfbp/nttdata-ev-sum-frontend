@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 // Pagination
 import { NgxPaginationModule } from 'ngx-pagination';
+import { VentaComponent } from './component/venta/venta.component';
+import { FormularioPagoComponent } from './component/venta/formulario-pago/formulario-pago.component';
+import { FormularioEnvioComponent } from './component/venta/formulario-envio/formulario-envio.component';
 
 
 
@@ -22,7 +25,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ProductoComponent,
     LoginComponent,
     HeaderComponent,
-    ProductoFormComponent
+    ProductoFormComponent,
+    VentaComponent,
+    FormularioPagoComponent,
+    FormularioEnvioComponent
 
   ],
   imports: [
