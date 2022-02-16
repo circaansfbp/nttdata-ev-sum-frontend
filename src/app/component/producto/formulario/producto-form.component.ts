@@ -9,6 +9,7 @@ import swal from 'sweetalert2';
   templateUrl: './producto-form.component.html',
   styleUrls: ['./producto-form.component.css']
 })
+
 export class ProductoFormComponent implements OnInit {
 
   title: string = 'Agregar producto';
@@ -29,6 +30,19 @@ export class ProductoFormComponent implements OnInit {
           swal.fire("¡Producto creado!", "El producto ha sido guardado exitosamente", "success");
           this.router.navigate(['/productos']);
         }
+      }
+    )
+  }
+
+  public getProducto(): void{
+    console.log(this.productoService.getProducto(1));
+  }
+
+  public updateProducto(idProducto: number){
+    this.productoService.updateProducto(idProducto).subscribe(
+      json => {
+        this.router.navigate(['/editar'])
+        swal.fire('Producto actualizado',`Producto ${json.producto.nombre} actualizado`, 'success')
       }
     )
   }

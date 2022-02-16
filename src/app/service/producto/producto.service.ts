@@ -20,7 +20,7 @@ export class ProductoService {
   getProducto(id: number): Observable<Producto> {
     const producto = PRODUCTOS.filter(producto => producto.id === id)[0];
     return of(producto);
-
+  }
   // Recuperar las categorías de un producto
   // getCategorias(): Observable<Producto[]> {
 
