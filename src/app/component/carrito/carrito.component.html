@@ -26,7 +26,7 @@
                     <td colspan="4"></td>
                     <td><button (click)="removeAllProduct()"  class="btn btn-danger">Vaciar Carrito</button></td>
                     <td><button routerLink="/productos" class="btn btn-warning">Comprar más</button></td>
-                    <td><button class="btn btn-success">Pagar</button></td>
+                    <td><button (click)="payment()" class="btn btn-success">Pagar</button></td>
                     <td><strong>Total: Debería estar el precio total</strong></td>
                 </tr>
             </tbody>

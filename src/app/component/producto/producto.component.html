@@ -26,12 +26,10 @@
         <!-- Filtrar por categoría -->
         <div class="col-6">
           <label form="categoria">Filtrar por categoría:</label>
-          <select
-            class="form-select"
-            [(ngModel)]="categoria"
-            name="categoria"
-          >
-            <option *ngFor="let cat of categorias" value="{{cat}}">{{cat}}</option>
+          <select class="form-select" [(ngModel)]="categoria" name="categoria">
+            <option *ngFor="let cat of categorias" value="{{ cat }}">
+              {{ cat }}
+            </option>
           </select>
         </div>
       </div>
@@ -67,7 +65,13 @@
               <td>
                 <form>
                   <div class="form-group">
-                    <input type="number" class="form-control" id="cantidadP"  [(ngModel)]="producto.cant" name="cantidad"placeholder="Ingrese Cantidad">
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="cantidadP"
+                      name="cantidad"
+                      [(ngModel)]="producto.cant"
+                    />
                   </div>
                 </form>
 

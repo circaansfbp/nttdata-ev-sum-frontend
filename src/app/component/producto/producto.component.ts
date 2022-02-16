@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Carrito } from 'src/app/class/carrito';
 import { Producto } from 'src/app/class/producto';
-
 import { CarritoapiService } from 'src/app/service/carrito/carritoapi.service';
-
 import { ProductoService } from 'src/app/service/producto/producto.service';
-
-import { Router, ActivatedRoute } from '@angular/router';
-
 
 import swal from 'sweetalert2';
 
@@ -16,37 +12,38 @@ import swal from 'sweetalert2';
   styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent implements OnInit {
-  productList:any;
+  productList: any;
 
   title: string = 'Listado de productos';
+
+  // Listado de productos
   productos: Producto[] = [];
 
   // Paginación
   totalItems: number = 0;
   p: number = 1;
 
+  // Filtros
   categoria: string = "";
   nombre: string = "";
 
   // Para cargar las categorías
-  categorias: string[] = []; 
+  categorias: string[] = [];
 
-  constructor( private productoService: ProductoService,
-    private cartApi:CarritoapiService ) { }
+  constructor(private productoService: ProductoService,
+    private cartApi: CarritoapiService) { }
 
   ngOnInit(): void {
     this.getProductos();
     this.getCategorias();
 
-    // Qué es esto?
-    this.productoService.getProductos().subscribe(res=>{
-      this.productList=res;
-      this.productList.forEach((a:any)=>{
+    this.productoService.getProductos().subscribe(res => {
+      this.productList = res;
+      this.productList.forEach((a: any) => {
 
-        Object.assign(a,{cantidad:a.cantidad, total:a.precio})
+        Object.assign(a, { cantidad: a.cantidad, total: a.precio })
       })
     })
-
   }
 
   // Obtener todos los productos
@@ -94,8 +91,8 @@ export class ProductoComponent implements OnInit {
   }
 
   // Añadir un producto al carrito
-  addToCarrito(producto:any){
+  addToCarrito(producto: any) {
     this.cartApi.addToCart(producto, producto.cant);
-    producto.cant=0;
+    producto.cant = 0;
   }
 }
