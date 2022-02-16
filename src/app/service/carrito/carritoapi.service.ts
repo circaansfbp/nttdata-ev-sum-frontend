@@ -35,7 +35,7 @@ export class CarritoapiService {
 
   removeCarritoProduct(producto:any){
     this.cartDataList.map((a:any, index:any)=>{
-      if(producto.idProducto==a.id){
+      if(producto.id==a.id){
         this.cartDataList.splice(index,1)
       }
     })
