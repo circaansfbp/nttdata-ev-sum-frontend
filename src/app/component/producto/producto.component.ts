@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/class/producto';
 
-import { CarritoapiService } from 'src/app/service/carritoapi.service';
+import { CarritoapiService } from 'src/app/service/carrito/carritoapi.service';
 
 import { ProductoService } from 'src/app/service/producto/producto.service';
 
@@ -32,7 +32,8 @@ export class ProductoComponent implements OnInit {
 
 
   constructor( private productoService: ProductoService,
-    private cartApi:CarritoapiService) { }
+    private cartApi:CarritoapiService,
+    private router:Router) { }
 
   ngOnInit(): void {
     this.getProductos();
@@ -42,6 +43,7 @@ export class ProductoComponent implements OnInit {
         Object.assign(a,{quantity:1, total:a.price})
       })
     })
+  }
 
 
   getProductos(): void {
@@ -80,6 +82,7 @@ export class ProductoComponent implements OnInit {
 
   addToCarrito(producto:any){
     this.cartApi.addToCart(producto);
+  }
 
 
   updateProducto(idProducto: number): void{
