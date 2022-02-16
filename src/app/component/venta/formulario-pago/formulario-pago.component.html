@@ -29,7 +29,7 @@
              <small
                 *ngIf="nombre.errors?.['required']"
                class="text-danger"
-               >Debes ingresar el nombre del producto!</small
+               >Debes ingresar el nombre</small
              >
              <small
                *ngIf="nombre.errors?.['minlength']"
@@ -40,26 +40,139 @@
              >
            </div>
             </div>
-       <div class="col-md-3 col-sm-3 col-xs-3">
-                <span class="help-block text-muted small-font" > Tipo de tarjeta</span>
-                <input type="text" class="form-control" placeholder="" />
-            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <span class="help-block text-muted small-font" >Número de tarjeta</span>
+              <input
+            ngModel
+            #numero="ngModel"
+            type="number"
+            class="form-control"
+            name="numero"
+            id="numero"
+            pattern=".{16,16}"
+            required
+            
+          />
+           <!-- Manejo de errores -->
+           <div
+           class="mt-2"
+           *ngIf="
+             (numero.touched || numero.dirty) &&
+             !numero.valid
+           "
+         >
+           <small
+              *ngIf="numero.errors?.['required']"
+             class="text-danger"
+             >Debe ingresar los números de su tarjeta</small
+           >
+           <small
+             *ngIf="numero.errors?.['pattern']"
+             class="text-danger"
+             >Error, debe ingresar los 16 numeros de su tarjeta</small
+           >
+         </div>
+          </div>
       
            
               </div>
          <div class="row ">
                   <div class="col-md-3 col-sm-3 col-xs-3">
                       <span class="help-block text-muted small-font" > Mes expiración</span>
-                      <input type="text" class="form-control" placeholder="MM" />
+                      <input
+                      ngModel
+                      #mes="ngModel"
+                      type="number"
+                      class="form-control"
+                      name="mes"
+                      id="mes"
+                      required
+                      pattern=".{2,2}"
+                    />
+                    <div
+                    class="mt-2"
+                    *ngIf="
+                      (mes.touched || mes.dirty) &&
+                      !mes.valid
+                    "
+                  >
+                    <small
+                       *ngIf="mes.errors?.['required']"
+                      class="text-danger"
+                      >Debes ingresar el mes de expiración</small
+                    >
+                    <small
+                      *ngIf="mes.errors?.['pattern']"
+                      class="text-danger"
+                      >El mes debe contener dos numeros</small
+                    >
+                   
                   </div>
-             <div class="col-md-3 col-sm-3 col-xs-3">
-                      <span class="help-block text-muted small-font" > Año expiración</span>
-                      <input type="text" class="form-control" placeholder="YY" />
                   </div>
-            <div class="col-md-3 col-sm-3 col-xs-3">
-                      <span class="help-block text-muted small-font" >  CCV</span>
-                      <input type="text" class="form-control" placeholder="CCV" />
-                  </div>
+                 
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                  <span class="help-block text-muted small-font" > Año expiración</span>
+                  <input
+                  ngModel
+                  #ano="ngModel"
+                  type="number"
+                  class="form-control"
+                  name="ano"
+                  id="ano"
+                  required
+                  maxlength="2"
+                  pattern=".{2,2}"
+                />
+                <div
+                class="mt-2"
+                *ngIf="
+                  (ano.touched || ano.dirty) &&
+                  !ano.valid
+                "
+              >
+                <small
+                   *ngIf="ano.errors?.['required']"
+                  class="text-danger"
+                  >Debes ingresar el año de expiración</small
+                >
+                <small
+                  *ngIf="ano.errors?.['pattern']"
+                  class="text-danger"
+                  >El ano debe contener dos numeros</small
+                >
+              </div>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-3">
+                <span class="help-block text-muted small-font" > CVV</span>
+                <input
+                ngModel
+                #cvv="ngModel"
+                type="number"
+                class="form-control"
+                name="cvv"
+                pattern=".{3,3}"
+                required
+                minlength="3"
+              />
+              <div
+              class="mt-2"
+              *ngIf="
+                (cvv.touched || cvv.dirty) &&
+                !cvv.valid
+              "
+            >
+              <small
+                 *ngIf="cvv.errors?.['required']"
+                class="text-danger"
+                >Ingrese el cvv de la tarjeta</small
+              >
+              <small
+                *ngIf="cvv.errors?.['pattern']"
+                class="text-danger"
+                >El cvv contiene tres numeros</small
+              >
+            </div>
+            </div>
              <div class="col-md-3 col-sm-3 col-xs-3">
                 <img src="assets/img/tarjetaFinal.png" class="img-fluid" />
              </div>
@@ -69,7 +182,15 @@
               <div class="form-group row mb-3">
                 <div class="row-mb">
                     <div class="col-md-3 col-sm-3 col-xs-3">
-                        <button class="btn btn-outline-success btn-lg float-start" >PAGAR</button>
+                        <button
+                         [disabled]="
+                  cvv.invalid ||
+                  ano.invalid ||
+                  mes.invalid ||
+                  numero.invalid ||
+                  nombre.invalid"
+                  
+                 class="btn btn-outline-success btn-lg float-start" >PAGAR</button>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-3">
                         <button type="button"  class="btn btn-lg btn-outline-danger float-end">CANCELAR</button>
