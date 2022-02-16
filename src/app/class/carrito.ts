@@ -3,6 +3,6 @@ import { Producto } from "./producto";
 export class Carrito {
     id: number = 0;
     productos: Producto[] = [];
-    cantidadProductos: number = 0;
-    precioTotal: number = 0; 
+    cantidad: number = 0;
+    precioTotalProducto: number = 0;
 }
