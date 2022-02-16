@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/class/producto';
+
+import { CarritoapiService } from 'src/app/service/carritoapi.service';
+
 import { ProductoService } from 'src/app/service/producto/producto.service';
 
 import { Router, ActivatedRoute } from '@angular/router';
+
 
 import swal from 'sweetalert2';
 
@@ -12,6 +16,9 @@ import swal from 'sweetalert2';
   styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent implements OnInit {
+
+
+  productList:any;
 
   title: string = 'Listado de productos';
   productos: Producto[] = [];
@@ -24,11 +31,18 @@ export class ProductoComponent implements OnInit {
   nombre: string = "";
 
 
-  constructor( private productoService: ProductoService, private router: Router, private activeRoute: ActivatedRoute ) { }
+  constructor( private productoService: ProductoService,
+    private cartApi:CarritoapiService) { }
 
   ngOnInit(): void {
     this.getProductos();
-  }
+    this.productoService.getProductos().subscribe(res=>{
+      this.productList=res;
+      this.productList.forEach((a:any)=>{
+        Object.assign(a,{quantity:1, total:a.price})
+      })
+    })
+
 
   getProductos(): void {
     this.productoService.getProductos().subscribe(
@@ -64,6 +78,10 @@ export class ProductoComponent implements OnInit {
   }
 
 
+  addToCarrito(producto:any){
+    this.cartApi.addToCart(producto);
+
+
   updateProducto(idProducto: number): void{
     this.productoService.updateProducto(idProducto).subscribe(
       json => {
@@ -71,5 +89,6 @@ export class ProductoComponent implements OnInit {
         swal.fire('Producto actualizado',`El producto ${json.productos.nombre} fue actualizado`, 'success')
       }
     )
+
   }
 }

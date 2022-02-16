@@ -46,10 +46,12 @@ export class ProductoService {
 
     return of(PRODUCTOS);
   }
+
   // Actualizar un producto
   updateProducto(idProducto: number): Observable<any>{
     const producto = PRODUCTOS.filter(producto => producto.id === idProducto)[0];
     return of(producto)
   }
+
 
 }

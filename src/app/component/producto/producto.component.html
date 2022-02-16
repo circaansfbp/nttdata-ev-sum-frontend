@@ -3,9 +3,12 @@
     <div class="card-header">
       <h3 class="card-title">{{ title }}</h3>
 
+
+
       <div class="text-start">
         <a type="button" class="btn btn-primary" routerLink="/productos/form">Agregar producto</a>
       </div>
+
     </div>
 
     <div class="card-body">
@@ -35,6 +38,10 @@
               <th>Precio</th>
               <th>Categoría</th>
               <th>Descripción</th>
+
+              <th>Compra</th>
+
+
               <th>Acciones</th>
             </tr>
           </thead>
@@ -42,6 +49,7 @@
           <tbody>
             <tr
               *ngFor="
+
 
                 let producto of productos 
 
@@ -58,9 +66,25 @@
               <td>
                 <button
                   type="button"
+
+                  role="button"
+                  class="btn btn-primary me-2"
+                  (click)="addToCarrito(producto)"
+                >
+                  Agregar
+                </button>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  role="button"
+                  class="btn btn-warning me-2"
+                >
+
                   class="btn btn-warning me-2"
                   [routerLink]="['/productos/editar/',producto.id]"
                   role="button" >
+
                   Editar
                 </button>
                 <button
