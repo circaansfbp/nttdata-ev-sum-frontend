@@ -26,12 +26,12 @@ export const PRODUCTOS: Producto[] = [
                 id: 8, nombre: 'Alimento perro adulto Masterdog 15kg', precio: 22090, categoria: 'Mascotas', descripcion: 'Irresistible para tus canes',
         },
         {
-                id: 9, nombre: 'Leche descremada', precio: 1990, categoria: 'Lacteos', descripcion: 'Sin lactosa, 1L, Colun',
+                id: 9, nombre: 'Leche descremada', precio: 1990, categoria: 'Lácteos', descripcion: 'Sin lactosa, 1L, Colun',
         },
         {
-                id: 10, nombre: 'Mantequilla', precio: 2390, categoria: 'Lacteos', descripcion: 'Con sal, 250g',
+                id: 10, nombre: 'Mantequilla', precio: 2390, categoria: 'Lácteos', descripcion: 'Con sal, 250g',
         },
         {
-                id: 11, nombre: 'Yoghurt natural', precio: 360, categoria: 'Lacteos', descripcion: 'No endulzado, 120g, Colun',
+                id: 11, nombre: 'Yoghurt natural', precio: 360, categoria: 'Lácteos', descripcion: 'No endulzado, 120g, Colun',
         },
 ]
