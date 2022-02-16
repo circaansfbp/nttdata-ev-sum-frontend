@@ -51,7 +51,7 @@
               *ngFor="
 
 
-                let producto of productos 
+                let producto of productos
 
                   | filter : categoria
                   | filter : nombre
@@ -65,8 +65,8 @@
               <td>{{ producto.descripcion }}</td>
               <td>
                 <button
+                  id="agregar"
                   type="button"
-
                   role="button"
                   class="btn btn-primary me-2"
                   (click)="addToCarrito(producto)"
