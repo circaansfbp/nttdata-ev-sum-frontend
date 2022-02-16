@@ -16,16 +16,22 @@ export class ProductoService {
   }
 
 
-  // Obtener 1 producto
+  // Obtener un producto
   getProducto(id: number): Observable<Producto> {
-    const producto = PRODUCTOS.filter(producto => producto.id === id)[0];
-    return of(producto);
+     const producto = PRODUCTOS.filter(producto => producto.id == id)[0];
+     return of(producto);
   }
 
   // Recuperar las categorías de un producto
-  // getCategorias(): Observable<Producto[]> {
+  getCategorias(): Observable<any>{
+    let values: any = new Set([]);
 
-  // }
+    PRODUCTOS.forEach(producto => {
+      values.add(Object.entries(producto)[3][1]);
+    });
+
+    return of(values);
+  }
 
   // Crear un producto
   createProducto(producto: Producto): Observable<Producto> {
@@ -34,6 +40,20 @@ export class ProductoService {
 
     PRODUCTOS.push(producto);
     return of(PRODUCTOS.slice(-1)[0]);
+  }
+
+  // Actualizar un producto
+  updateProducto(productoToUpdate: Producto): Observable<Producto[]>{
+    PRODUCTOS.map((producto, index) => {
+      if (Object.entries(producto) === Object.entries(productoToUpdate)) {
+        producto.nombre = productoToUpdate.nombre;
+        producto.precio = productoToUpdate.precio;
+        producto.categoria = productoToUpdate.categoria;
+        producto.descripcion = productoToUpdate.descripcion;
+      }
+    });
+
+    return of(PRODUCTOS);
   }
 
   // Eliminar un producto
@@ -46,12 +66,5 @@ export class ProductoService {
 
     return of(PRODUCTOS);
   }
-
-  // Actualizar un producto
-  updateProducto(idProducto: number): Observable<any>{
-    const producto = PRODUCTOS.filter(producto => producto.id === idProducto)[0];
-    return of(producto)
-  }
-
 
 }

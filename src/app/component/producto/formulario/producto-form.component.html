@@ -56,17 +56,23 @@
               id="precio"
               [(ngModel)]="producto.precio"
               required
+              min="1"
             />
 
             <!-- Manejo de errores -->
-            <div class="mt-2">
-              <small
+            <div class="mt-2" *ngIf="
+            (precioProducto.touched || precioProducto.dirty) &&
+            !precioProducto.valid
+          ">
+              <small *ngIf="precioProducto.errors?.['required']"
                 class="text-danger"
-                *ngIf="
-                  (precioProducto.touched || precioProducto.dirty) &&
-                  !precioProducto.valid
-                "
+                
                 >Debes ingresar el precio del producto!</small
+              >
+              <small *ngIf="precioProducto.errors?.['min']"
+                class="text-danger"
+                
+                >Debes ingresar un valor válido!</small
               >
             </div>
           </div>
@@ -139,15 +145,22 @@
               type="submit"
               role="button"
               (click)="crearProducto(producto)"
+              *ngIf="producto.id === 0; else elseBlock"
             >
               Crear producto
             </button>
           </div>
-          <!-- 
-                        *ngIf="!empleado.id else elseBlock"
-                        <ng-template #elseBlock>
-                        <button class="btn btn-warning" type="submit" role="button" (click)="update()">Actualizar empleado</button>
-                    </ng-template> -->
+
+          <ng-template #elseBlock>
+            <button
+              class="btn btn-warning"
+              type="submit"
+              role="button"
+              (click)="updateProducto(producto)"
+            >
+              Actualizar producto
+            </button>
+          </ng-template>
         </div>
       </form>
     </div>
