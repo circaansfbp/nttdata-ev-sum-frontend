@@ -3,9 +3,9 @@
     <div class="card-header">
       <h3 class="card-title">{{ title }}</h3>
 
-      <!-- <div class="my-2 text-start">
-                <button class="btn btn-outline-primary" type="button" routerLink="/empleados/form">Nuevo empleado</button>
-            </div> -->
+      <div class="text-start">
+        <a type="button" class="btn btn-primary" routerLink="/productos/form">Agregar producto</a>
+      </div>
     </div>
 
     <div class="card-body">
@@ -42,7 +42,9 @@
           <tbody>
             <tr
               *ngFor="
-                let producto of productos
+
+                let producto of productos 
+
                   | filter : categoria
                   | filter : nombre
                   | paginate: { itemsPerPage: 2, currentPage: p }

@@ -15,10 +15,24 @@ export class ProductoService {
     return of(PRODUCTOS);
   }
 
+
   // Obtener 1 producto
   getProducto(id: number): Observable<Producto> {
     const producto = PRODUCTOS.filter(producto => producto.id === id)[0];
     return of(producto);
+
+  // Recuperar las categorías de un producto
+  // getCategorias(): Observable<Producto[]> {
+
+  // }
+
+  // Crear un producto
+  createProducto(producto: Producto): Observable<Producto> {
+    // Setea el ID autoincremental
+    producto.id = PRODUCTOS.slice(-1)[0].id + 1;
+
+    PRODUCTOS.push(producto);
+    return of(PRODUCTOS.slice(-1)[0]);
   }
 
   // Eliminar un producto
@@ -31,10 +45,10 @@ export class ProductoService {
 
     return of(PRODUCTOS);
   }
-
   // Actualizar un producto
   updateProducto(idProducto: number): Observable<any>{
     const producto = PRODUCTOS.filter(producto => producto.id === idProducto)[0];
     return of(producto)
   }
+
 }
