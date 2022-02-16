@@ -1,50 +1,72 @@
-<ng-container *ngIf="productos.length !=0">
-<div class="card-table">
+<ng-container *ngIf="productos?.length != 0">
+  <div class="card-table">
     <div class="card-product">
-        <table class="table table-responsive">
-            <thead>
-                <tr>
-                    <th>Nr</th>
-                    <th>Nombre</th>
-                    <th>Categoria</th>
-                    <th>Cantidad</th>
-                    <th>Precio</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let producto of productos, let i = index">
-                    <td>{{i+1}}</td>
-                    <td>{{producto.nombre}}</td>
-                    <td>{{producto.categoria}}</td>
-                    <td>{{producto.cantidad}}</td>
-                    <td>{{producto.precio}}</td>
-                    <td>{{producto.cantidad? producto.precio * producto.cantidad:0}}</td>
-                    <td><button class="btn btn-danger" (click)="removeProduct(producto)"><i class="fas fa-trash"></i></button></td>
-                </tr>
-                <tr>
-                    <td colspan="4"></td>
-                    <td><button (click)="removeAllProduct()"  class="btn btn-danger">Vaciar Carrito</button></td>
-                    <td><button routerLink="/productos" class="btn btn-warning">Comprar más</button></td>
-                    <td><button (click)="saveCarrito()" class="btn btn-success">Pagar</button></td>
-                    <td><strong>Total: {{allProductos}}</strong></td>
-                </tr>
-            </tbody>
-        </table>
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th>Nr</th>
+            <th>Nombre</th>
+            <th>Categoria</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let producto of productos; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.categoria }}</td>
+            <td>{{ producto.cantidad }}</td>
+            <td>{{ producto.precio }}</td>
+            <td>
+              {{ producto.cantidad ? producto.precio * producto.cantidad : 0 }}
+            </td>
+            <td>
+              <button class="btn btn-danger" (click)="removeProduct(producto)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4"></td>
+            <td>
+              <button (click)="removeAllProduct()" class="btn btn-danger">
+                Vaciar Carrito
+              </button>
+            </td>
+            <td>
+              <button routerLink="/productos" class="btn btn-warning">
+                Comprar más
+              </button>
+            </td>
+            <td>
+              <button
+                (click)="payment()"
+                class="btn btn-success"
+              >
+                Pagar
+              </button>
+            </td>
+            <td>
+              <strong>Total: {{ allProductos }}</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-</div>
+  </div>
 </ng-container>
 
-
-<ng-container *ngIf="productos.length==0">
-<div class="container">
+<ng-container *ngIf="productos?.length == 0">
+  <div class="container">
     <div class="card">
-        <h4 class="card-title">Carrito</h4>
+      <h4 class="card-title">Carrito</h4>
     </div>
     <div class="center">
-        <h5>Carrito vacío</h5>
-        <h6>Agrega cosas!</h6>
-        <button class="btn btn-primary">Comprar</button>
+      <h5>Carrito vacío</h5>
+      <h6>Agrega cosas!</h6>
+      <button class="btn btn-primary">Comprar</button>
     </div>
-</div>
+  </div>
 </ng-container>

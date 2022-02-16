@@ -11,13 +11,13 @@ export class VentaService {
 
   constructor() { }
 
-  payment(carrito: Carrito, cantidadProductos: number, total: number): Observable<any> {
-    carrito.id = PRODUCTOS.length === 0 ? 1 : PRODUCTOS.slice(-1)[0].id;
-    carrito.cantidadProductos = cantidadProductos;
-    carrito.precioTotal = total;
+  // payment(carrito: Carrito, cantidadProductos: number, total: number): Observable<any> {
+  //   carrito.id = PRODUCTOS.length === 0 ? 1 : PRODUCTOS.slice(-1)[0].id;
+  //   carrito.cantidad = cantidadProductos;
+  //   carrito.precioTotalProducto = total;
 
-    CARRITO.push(carrito);
+  //   CARRITO.push(carrito);
 
-    return of(CARRITO);
-  }
+  //   return of(CARRITO);
+  // }
 }

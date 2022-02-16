@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Carrito } from 'src/app/class/carrito';
+import { Router } from '@angular/router';
 import { Producto } from 'src/app/class/producto';
 import { CarritoapiService } from 'src/app/service/carrito/carritoapi.service';
-import { VentaService } from 'src/app/service/venta/venta.service';
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -10,18 +10,19 @@ import { VentaService } from 'src/app/service/venta/venta.service';
   templateUrl: './carrito.component.html',
   styleUrls: ['./carrito.component.css']
 })
+
 export class CarritoComponent implements OnInit {
-  productos:Producto[]=[]
-  allProductos:any=0;
-  constructor(private cartApi:CarritoapiService) { }
+  productos: Producto[] = []
+  allProductos: any = 0;
+
+  constructor(private cartApi: CarritoapiService,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.cartApi.getProductData().subscribe(res=>{
-      this.productos=res.productos;
-      this.allProductos=res.precioTotalProducto;
-      console.log(res)
-    })
-
+    this.cartApi.getProductData().subscribe(res => {
+      this.productos = res.productos;
+      this.allProductos = res.precioTotalProducto;
+    });
   }
 
   removeProduct(producto: any) {
@@ -31,29 +32,24 @@ export class CarritoComponent implements OnInit {
   removeAllProduct() {
     this.cartApi.removeCarrito();
   }
-  
-  saveCarrito(){
-    this.cartApi.guardarCarrito()
-  }
 
   // Para manejar el pago
   payment(): void {
-    // Calcular la cantidad de productos y el total
+    // Calcular la cantidad de productos
     let cantidad = 0;
-    let total = 0;
 
-    this.productos.forEach((producto: any) => {
-      // Cantidad
-      cantidad += producto.cantidad;
+    if (this.productos) {
+      this.productos.forEach((producto: any) => cantidad += producto.cantidad);
 
-      // Precio
-      total += producto.precio * producto.cantidad;
-    });
-
-    this.ventaService.payment(this.carrito, cantidad, total).subscribe(
-      data => {
-        console.log(data);
-      }
-    );
+      this.cartApi.payment(cantidad).subscribe(
+        data => {
+          if (data) {
+            swal.fire("Productos agregados!", "Ahora, ingresa los datos solicitados para gestionar el envío", "success");
+            this.router.navigate(['/venta/form-envio']);
+          }
+        }
+      );
+    } 
+    else swal.fire("No existen productos!", "Primero, debes agregar productos al carrito.", "warning");
   }
 }

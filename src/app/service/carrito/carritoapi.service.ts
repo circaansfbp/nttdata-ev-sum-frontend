@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Carrito } from 'src/app/class/carrito';
 import { Producto } from 'src/app/class/producto';
+import { CARRITO } from './carrito.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarritoapiService {
 
-  carrito = new Carrito();
+  carrito: Carrito = new Carrito();
   productList = new BehaviorSubject<any>([]);
   constructor() { }
 
@@ -54,7 +55,13 @@ export class CarritoapiService {
     this.productList.next(this.carrito)
   }
 
-  guardarCarrito() {
-    console.log(this.carrito);
+  payment(cantidadProductos: number): Observable<Carrito[]> {
+    this.carrito.id = (CARRITO.length === 0) ? 1 : CARRITO.slice(-1)[0].id;
+    this.carrito.cantidad = cantidadProductos;
+
+    CARRITO.push(this.carrito);
+
+    return of(CARRITO);
+
   }
 }
