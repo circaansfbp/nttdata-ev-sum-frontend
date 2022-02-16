@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Producto } from 'src/app/class/producto';
 import { ProductoService } from 'src/app/service/producto/producto.service';
 import swal from 'sweetalert2';
@@ -18,11 +18,31 @@ export class ProductoFormComponent implements OnInit {
   producto: Producto = new Producto();
 
   constructor( private productoService: ProductoService,
-               private router: Router ) { }
+               private router: Router,
+               private activatedRoute: ActivatedRoute ) { }
 
   ngOnInit(): void {
+    this.loadProducto();
   }
 
+  // Para actualizar, carga los datos del producto
+  loadProducto() {
+    this.activatedRoute.params.subscribe(
+      params => {
+        let idProducto = params['id'];
+
+        if (idProducto) {
+          this.productoService.getProducto(idProducto).subscribe(
+            data => {
+              this.producto = data;
+            }
+          );
+        }
+      }
+    );
+  }
+
+  // Crear un nuevo producto
   crearProducto(producto: Producto): void {
     this.productoService.createProducto(producto).subscribe(
       data => {
@@ -34,16 +54,15 @@ export class ProductoFormComponent implements OnInit {
     )
   }
 
-  public getProducto(): void{
-    console.log(this.productoService.getProducto(1));
-  }
-
-  public updateProducto(idProducto: number){
-    this.productoService.updateProducto(idProducto).subscribe(
-      json => {
-        this.router.navigate(['/editar'])
-        swal.fire('Producto actualizado',`Producto ${json.producto.nombre} actualizado`, 'success')
+  // Actualizar un producto
+  public updateProducto(producto: Producto){
+    this.productoService.updateProducto(producto).subscribe(
+      data => {
+        if (data) {
+          swal.fire("¡Producto actualizado!", "El producto ha sido modificado exitosamente", "success");
+          this.router.navigate(['/productos']);
+        }
       }
-    )
+    );
   }
 }

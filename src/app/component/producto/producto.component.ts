@@ -16,8 +16,6 @@ import swal from 'sweetalert2';
   styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent implements OnInit {
-
-
   productList:any;
 
   title: string = 'Listado de productos';
@@ -30,22 +28,28 @@ export class ProductoComponent implements OnInit {
   categoria: string = "";
   nombre: string = "";
 
+  // Para cargar las categorías
+  categorias: string[] = []; 
 
   constructor( private productoService: ProductoService,
-    private cartApi:CarritoapiService,
-    private router:Router) { }
+    private cartApi:CarritoapiService ) { }
 
   ngOnInit(): void {
     this.getProductos();
+    this.getCategorias();
+
+    // Qué es esto?
     this.productoService.getProductos().subscribe(res=>{
       this.productList=res;
       this.productList.forEach((a:any)=>{
-        Object.assign(a,{quantity:1, total:a.price})
+
+        Object.assign(a,{cantidad:a.cantidad, total:a.precio})
       })
     })
+
   }
 
-
+  // Obtener todos los productos
   getProductos(): void {
     this.productoService.getProductos().subscribe(
       data => {
@@ -55,6 +59,16 @@ export class ProductoComponent implements OnInit {
     )
   }
 
+  // Obtener las categorías para desplegarlas en el filtro de búsqueda por categoría
+  getCategorias() {
+    this.productoService.getCategorias().subscribe(
+      data => {
+        this.categorias = Array.from(data);
+      }
+    );
+  }
+
+  // Eliminar un producto
   deleteProducto(idProducto: number): void {
     swal.fire({
       title: '¿Estás seguro de que quieres eliminar el producto?',
@@ -79,19 +93,9 @@ export class ProductoComponent implements OnInit {
     });
   }
 
-
+  // Añadir un producto al carrito
   addToCarrito(producto:any){
-    this.cartApi.addToCart(producto);
-  }
-
-
-  updateProducto(idProducto: number): void{
-    this.productoService.updateProducto(idProducto).subscribe(
-      json => {
-        this.router.navigate(['/producto'])
-        swal.fire('Producto actualizado',`El producto ${json.productos.nombre} fue actualizado`, 'success')
-      }
-    )
-
+    this.cartApi.addToCart(producto, producto.cant);
+    producto.cant=0;
   }
 }

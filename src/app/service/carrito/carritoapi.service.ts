@@ -20,16 +20,24 @@ export class CarritoapiService {
     this.productList.next(producto);
   }
 
-  addToCart(producto:any){
-    this.cartDataList.push(producto);
+  addToCart(producto:any, cant:number){
+    const productoEnCarrito = this.cartDataList.find((p:any)=>p.id===producto.id)
+    if(productoEnCarrito){
+      productoEnCarrito.cantidad += cant;
+
+    }else{
+      producto.cantidad =cant;
+      this.cartDataList.push(producto);
+      
+    }
     this.productList.next(this.cartDataList);
     this.getTotal();
   }
 
   getTotal(){
-    let total=0;
+    let grandTotal=0;
     this.cartDataList.map((a:any)=>{
-      total += a.total;
+      grandTotal +=a.precio;
     })
   }
 
@@ -39,6 +47,7 @@ export class CarritoapiService {
         this.cartDataList.splice(index,1)
       }
     })
+    this.productList.next(this.cartDataList)
   }
 
   removeCarrito(){
