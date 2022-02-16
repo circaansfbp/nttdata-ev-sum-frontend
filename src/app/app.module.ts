@@ -8,11 +8,20 @@ import { AppComponent } from './app.component';
 import { ProductoComponent } from './component/producto/producto.component';
 import { LoginComponent } from './component/login/login.component';
 import { HeaderComponent } from './component/header/header.component';
+
+
+import { ProductoFormComponent } from './component/producto/formulario/producto-form.component';
+
 import { HttpClientModule } from '@angular/common/http';
 
 // Pagination
 import { NgxPaginationModule } from 'ngx-pagination';
+
 import { CarritoComponent } from './component/carrito/carrito.component';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -20,7 +29,12 @@ import { CarritoComponent } from './component/carrito/carrito.component';
     ProductoComponent,
     LoginComponent,
     HeaderComponent,
-    CarritoComponent
+
+    CarritoComponent,
+
+    ProductoFormComponent
+
+
   ],
   imports: [
     BrowserModule,
