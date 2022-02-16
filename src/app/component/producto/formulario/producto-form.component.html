@@ -29,33 +29,17 @@
         <div class="form-group row mb-3">
           <label for="" class="col-form-label col-sm-3">Precio</label>
           <div class="col-sm-9">
-            <input
-              ngModel
-              #precioProducto="ngModel"
-              type="number"
-              class="form-control"
-              name="precio"
-              id="precio"
-              [(ngModel)]="producto.precio"
-              required
-              min="1"
-            />
+            <input ngModel #precioProducto="ngModel" type="number" class="form-control" name="precio" id="precio"
+              [(ngModel)]="producto.precio" required min="1" />
 
             <!-- Manejo de errores -->
             <div class="mt-2" *ngIf="
             (precioProducto.touched || precioProducto.dirty) &&
             !precioProducto.valid
           ">
-              <small *ngIf="precioProducto.errors?.['required']"
-                class="text-danger"
-
-                >Debes ingresar el precio del producto!</small
-              >
-              <small *ngIf="precioProducto.errors?.['min']"
-                class="text-danger"
-
-                >Debes ingresar un valor válido!</small
-              >
+              <small *ngIf="precioProducto.errors?.['required']" class="text-danger">Debes ingresar el precio del
+                producto!</small>
+              <small *ngIf="precioProducto.errors?.['min']" class="text-danger">Debes ingresar un valor válido!</small>
             </div>
           </div>
         </div>
@@ -97,24 +81,24 @@
                 precioProducto.invalid ||
                 categoriaProducto.invalid ||
                 descripcionProducto.invalid
-              "
-              class="btn btn-danger"
-              type="submit"
-              role="button"
-              (click)="crearProducto(producto)"
-              *ngIf="producto.id === 0; else elseBlock"
-            >
+              " class="btn btn-danger" type="submit" role="button" (click)="crearProducto(producto)"
+              *ngIf="producto.id === 0; else elseBlock">
               Crear producto
             </button>
           </div>
 
           <ng-template #elseBlock>
-            <button
-              class="btn btn-warning"
-              type="submit"
-              role="button"
-              (click)="updateProducto(producto)"
-            >
+            <button [disabled]="
+
+            nombreProducto.invalid ||
+
+            precioProducto.invalid ||
+
+            categoriaProducto.invalid ||
+
+            descripcionProducto.invalid
+
+          " class="btn btn-warning" type="submit" role="button" (click)="updateProducto(producto)">
               Actualizar producto
             </button>
           </ng-template>
