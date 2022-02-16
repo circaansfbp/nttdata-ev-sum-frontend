@@ -1,0 +1,89 @@
+<div  class="container mt-4">
+    <div class="card" >
+        <div class="card-header">
+           <h3>Pago, Ingrese los datos de su tarjeta</h3>
+        </div>
+     <div class="card-body">
+         <form>
+          <div class="form-group row-mb-3 input-form">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <span class="help-block text-muted small-font" > Nombre titular</span>
+                <input
+              ngModel
+              #nombre="ngModel"
+              type="text"
+              class="form-control"
+              name="nombre"
+              id="nombre"
+              required
+              minlength="6"
+            />
+             <!-- Manejo de errores -->
+             <div
+             class="mt-2"
+             *ngIf="
+               (nombre.touched || nombre.dirty) &&
+               !nombre.valid
+             "
+           >
+             <small
+                *ngIf="nombre.errors?.['required']"
+               class="text-danger"
+               >Debes ingresar el nombre del producto!</small
+             >
+             <small
+               *ngIf="nombre.errors?.['minlength']"
+               class="text-danger"
+               >El nombre del producto debe poseer más de
+               {{ nombre.errors?.['minlength'].requiredLength }}
+               caracteres!</small
+             >
+           </div>
+            </div>
+       <div class="col-md-3 col-sm-3 col-xs-3">
+                <span class="help-block text-muted small-font" > Tipo de tarjeta</span>
+                <input type="text" class="form-control" placeholder="" />
+            </div>
+      
+           
+              </div>
+         <div class="row ">
+                  <div class="col-md-3 col-sm-3 col-xs-3">
+                      <span class="help-block text-muted small-font" > Mes expiración</span>
+                      <input type="text" class="form-control" placeholder="MM" />
+                  </div>
+             <div class="col-md-3 col-sm-3 col-xs-3">
+                      <span class="help-block text-muted small-font" > Año expiración</span>
+                      <input type="text" class="form-control" placeholder="YY" />
+                  </div>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                      <span class="help-block text-muted small-font" >  CCV</span>
+                      <input type="text" class="form-control" placeholder="CCV" />
+                  </div>
+             <div class="col-md-3 col-sm-3 col-xs-3">
+                <img src="assets/img/tarjetaFinal.png" class="img-fluid" />
+             </div>
+              </div>
+         
+              <br>
+              <div class="form-group row mb-3">
+                <div class="row-mb">
+                    <div class="col-md-3 col-sm-3 col-xs-3">
+                        <button class="btn btn-outline-success btn-lg float-start" >PAGAR</button>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-3">
+                        <button type="button"  class="btn btn-lg btn-outline-danger float-end">CANCELAR</button>
+                    </div>
+                   
+                    
+                </div>
+                
+                
+                
+            
+            </div>
+        </form>
+        </div>
+                 </div>
+            </div>
+    
