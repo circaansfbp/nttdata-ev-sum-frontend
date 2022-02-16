@@ -1,0 +1,79 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">{{ title }}</h3>
+      <div class="text-start">
+        <a type="button" class="btn btn-primary" routerLink="/productos/form">Agregar producto</a>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="row mb-4">
+        <div class="col-6 form-group">
+          <label form="nombre">Filtrar por nombre:</label>
+          <input type="text" [(ngModel)]="nombre" name="nombre" class="form-control">
+      </div>
+  
+      <div class="col-6">
+          <label form="categoria">Filtrar por categoría:</label>
+          <select class="form-select" [(ngModel)]="categoria" name="categoria">
+              <option value="Dulces">Dulces</option>
+              <option value="Cuidado Personal">Cuidado Personal</option>
+              <option value="Limpieza">Limpieza</option>
+            </select>
+      </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="table-dark">
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Categoría</th>
+              <th>Descripción</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr
+              *ngFor="
+                let producto of productos 
+                  | filter : categoria
+                  | filter : nombre
+                  | paginate: { itemsPerPage: 2, currentPage: p }
+              "
+            >
+              <td>{{ producto.id }}</td>
+              <td>{{ producto.nombre }}</td>
+              <td>{{ producto.precio }}</td>
+              <td>{{ producto.categoria }}</td>
+              <td>{{ producto.descripcion }}</td>
+              <td>
+                <button
+                  type="button"
+                  role="button"
+                  class="btn btn-warning me-2"
+                >
+                  Editar
+                </button>
+                <button
+                  type="button"
+                  role="button"
+                  class="btn btn-danger ms-2"
+                  (click)="deleteProducto(producto.id)"
+                >
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pagination-controls class="text-center" (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
