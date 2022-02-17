@@ -9,96 +9,162 @@
         <div class="form-group row mb-3 input-form">
           <label for="" class="col-form-label col-sm-3">Nombre</label>
           <div class="col-sm-9">
-            <input ngModel #nombreProducto="ngModel" type="text" class="form-control" name="nombre" id="nombre"
-              [(ngModel)]="producto.nombre" required minlength="2" />
+            <input
+              ngModel
+              #nombreProducto="ngModel"
+              type="text"
+              class="form-control"
+              name="nombre"
+              id="nombre"
+              [(ngModel)]="producto.nombre"
+              required
+              minlength="2"
+            />
 
             <!-- Manejo de errores -->
-            <div class="mt-2" *ngIf="
+            <div
+              class="mt-2"
+              *ngIf="
                 (nombreProducto.touched || nombreProducto.dirty) &&
                 !nombreProducto.valid
-              ">
-              <small *ngIf="nombreProducto.errors?.['required']" class="text-danger">Debes ingresar el nombre del
-                producto!</small>
-              <small *ngIf="nombreProducto.errors?.['minlength']" class="text-danger">El nombre del producto debe poseer
-                más de
+              "
+            >
+              <small
+                *ngIf="nombreProducto.errors?.['required']"
+                class="text-danger"
+                >Debes ingresar el nombre del producto!</small
+              >
+              <small
+                *ngIf="nombreProducto.errors?.['minlength']"
+                class="text-danger"
+                >El nombre del producto debe poseer más de
                 {{ nombreProducto.errors?.['minlength'].requiredLength }}
-                caracteres!</small>
+                caracteres!</small
+              >
             </div>
           </div>
         </div>
         <div class="form-group row mb-3">
           <label for="" class="col-form-label col-sm-3">Precio</label>
           <div class="col-sm-9">
-            <input ngModel #precioProducto="ngModel" type="number" class="form-control" name="precio" id="precio"
-              [(ngModel)]="producto.precio" required min="1" />
+            <input
+              ngModel
+              #precioProducto="ngModel"
+              type="number"
+              class="form-control"
+              name="precio"
+              id="precio"
+              [(ngModel)]="producto.precio"
+              required
+              min="1"
+            />
 
             <!-- Manejo de errores -->
-            <div class="mt-2" *ngIf="
-            (precioProducto.touched || precioProducto.dirty) &&
-            !precioProducto.valid
-          ">
-              <small *ngIf="precioProducto.errors?.['required']" class="text-danger">Debes ingresar el precio del
-                producto!</small>
-              <small *ngIf="precioProducto.errors?.['min']" class="text-danger">Debes ingresar un valor válido!</small>
+            <div
+              class="mt-2"
+              *ngIf="
+                (precioProducto.touched || precioProducto.dirty) &&
+                !precioProducto.valid
+              "
+            >
+              <small
+                *ngIf="precioProducto.errors?.['required']"
+                class="text-danger"
+                >Debes ingresar el precio del producto!</small
+              >
+              <small *ngIf="precioProducto.errors?.['min']" class="text-danger"
+                >Debes ingresar un valor válido!</small
+              >
             </div>
           </div>
         </div>
         <div class="form-group row mb-3">
           <label for="" class="col-form-label col-sm-3">Categoría</label>
           <div class="col-sm-9">
-            <input ngModel #categoriaProducto="ngModel" type="text" class="form-control" name="categoria" id="categoria"
-              [(ngModel)]="producto.categoria" required />
+            <input
+              ngModel
+              #categoriaProducto="ngModel"
+              type="text"
+              class="form-control"
+              name="categoria"
+              id="categoria"
+              [(ngModel)]="producto.categoria"
+              required
+            />
 
             <!-- Manejo de errores -->
             <div class="mt-2">
-              <small class="text-danger" *ngIf="
+              <small
+                class="text-danger"
+                *ngIf="
                   (categoriaProducto.touched || categoriaProducto.dirty) &&
                   !categoriaProducto.valid
-                ">Debes ingresar la categoría del producto!</small>
+                "
+                >Debes ingresar la categoría del producto!</small
+              >
             </div>
           </div>
         </div>
         <div class="form-group row mb-3">
           <label for="" class="col-form-label col-sm-3">Descripción</label>
           <div class="col-sm-9">
-            <textarea ngModel #descripcionProducto="ngModel" type="text" class="form-control" name="descripcion"
-              id="descripcion" [(ngModel)]="producto.descripcion" required></textarea>
+            <textarea
+              ngModel
+              #descripcionProducto="ngModel"
+              type="text"
+              class="form-control"
+              name="descripcion"
+              id="descripcion"
+              [(ngModel)]="producto.descripcion"
+              required
+            ></textarea>
 
             <!-- Manejo de errores -->
             <div class="mt-2">
-              <small class="text-danger" *ngIf="
+              <small
+                class="text-danger"
+                *ngIf="
                   (descripcionProducto.touched || descripcionProducto.dirty) &&
                   !descripcionProducto.valid
-                ">Debes ingresar la descripción del producto!</small>
+                "
+                >Debes ingresar la descripción del producto!</small
+              >
             </div>
           </div>
         </div>
 
         <div class="form-group row mb-3">
           <div class="col-sm-12 text-center">
-            <button [disabled]="
+            <button
+              [disabled]="
                 nombreProducto.invalid ||
                 precioProducto.invalid ||
                 categoriaProducto.invalid ||
                 descripcionProducto.invalid
-              " class="btn btn-danger" type="submit" role="button" (click)="crearProducto(producto)"
-              *ngIf="producto.id === 0; else elseBlock">
+              "
+              class="btn btn-danger"
+              type="submit"
+              role="button"
+              (click)="crearProducto(producto)"
+              *ngIf="producto.id === 0; else elseBlock"
+            >
               Crear producto
             </button>
           </div>
 
           <ng-template #elseBlock>
-            <button [disabled]="
-
-            nombreProducto.invalid ||
-
-            precioProducto.invalid ||
-
-            categoriaProducto.invalid ||
-
-            descripcionProducto.invalid
-
-          " class="btn btn-warning" type="submit" role="button" (click)="updateProducto(producto)">
+            <button
+              [disabled]="
+                nombreProducto.invalid ||
+                precioProducto.invalid ||
+                categoriaProducto.invalid ||
+                descripcionProducto.invalid
+              "
+              class="btn btn-warning"
+              type="submit"
+              role="button"
+              (click)="updateProducto(producto)"
+            >
               Actualizar producto
             </button>
           </ng-template>

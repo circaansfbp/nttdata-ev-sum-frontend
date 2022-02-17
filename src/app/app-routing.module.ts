@@ -13,18 +13,13 @@ const routes: Routes = [
   { path: 'productos', component: ProductoComponent },
   { path: 'productos/form', component: ProductoFormComponent },
   { path: 'productos/editar/:id', component: ProductoFormComponent },
-  { path: 'carrito', component: CarritoComponent},
-  {
-    path: 'venta/form-envio', component : FormularioEnvioComponent
-  },
-  {
-    path: 'venta/form-pago', component : FormularioPagoComponent
-  },
-
+  { path: 'carrito', component: CarritoComponent },
+  { path: 'venta/form-envio', component: FormularioEnvioComponent },
+  { path: 'venta/form-pago', component: FormularioPagoComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {  }
+export class AppRoutingModule { }
