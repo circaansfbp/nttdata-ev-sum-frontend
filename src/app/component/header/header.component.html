@@ -24,10 +24,21 @@
           <a class="nav-link" routerLink="/productos">Productos</a>
         </li>
       </ul>
+      <ul class="navbar-nav d-flex ms-auto">
+        <li class="nav-item">
+            <a class="btn btn-outline-primary" (click)="signIn()"  *ngIf="!isAuthenticated">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-outline-primary me-2" routerLink="/profile" *ngIf="isAuthenticated">Perfil</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-outline-warning ms-2" routerLink="" (click)="signOut()" *ngIf="isAuthenticated">Sign Out</a>
+        </li>
+    </ul>
     </div>
 
 
-    <button  routerLink="carrito" class="btn btn-primary">
+    <button *ngIf="isAuthenticated" routerLink="carrito" class="btn btn-primary">
       <i class="fas fa-cart-plus" routerLink="/carrito"></i>
       <div class="badge bg-danger">{{totalProductos}}</div>
     </button>

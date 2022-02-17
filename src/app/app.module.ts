@@ -21,6 +21,9 @@ import { FormularioPagoComponent } from './component/venta/formulario-pago/formu
 import { FormularioEnvioComponent } from './component/venta/formulario-envio/formulario-envio.component';
 
 import { CarritoComponent } from './component/carrito/carrito.component';
+import { ProfileComponent } from './component/profile/profile.component';
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -36,7 +39,8 @@ import { CarritoComponent } from './component/carrito/carrito.component';
     ProductoFormComponent,
     VentaComponent,
     FormularioPagoComponent,
-    FormularioEnvioComponent
+    FormularioEnvioComponent,
+    ProfileComponent
 
 
   ],
@@ -46,7 +50,8 @@ import { CarritoComponent } from './component/carrito/carrito.component';
     HttpClientModule,
     NgxPaginationModule,
     FormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    AuthModule.forRoot(environment.auth0)
   ],
   providers: [],
   bootstrap: [AppComponent]
