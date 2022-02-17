@@ -1,23 +1,48 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Carrito } from 'src/app/class/carrito';
+import { Envio } from 'src/app/class/envio';
+import { Pago } from 'src/app/class/pago';
+import { Venta } from 'src/app/class/venta';
+import Swal from 'sweetalert2';
 import { CARRITO } from '../carrito/carrito.json';
-import { PRODUCTOS } from '../producto/producto.json';
+import { VENTAS } from './venta.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VentaService {
 
+  venta: Venta = new Venta();
+
   constructor() { }
 
-  // payment(carrito: Carrito, cantidadProductos: number, total: number): Observable<any> {
-  //   carrito.id = PRODUCTOS.length === 0 ? 1 : PRODUCTOS.slice(-1)[0].id;
-  //   carrito.cantidad = cantidadProductos;
-  //   carrito.precioTotalProducto = total;
+  // Para añadir el envío
+  addEnvio(datosEnvio: Envio) {
+    this.venta.datosEnvio = datosEnvio;
+  }
 
-  //   CARRITO.push(carrito);
+  // Para añadir el pago
+  addPago(datosPago: Pago) {
+    this.venta.datosPago = datosPago;
+  }
 
-  //   return of(CARRITO);
-  // }
+  buy(): Observable<Venta> {
+    // FALTA AGREGAR FECHA Y VERIFICAR EL TOTAL
+
+    if (this.venta.datosEnvio && this.venta.datosPago) {
+      Swal.fire("Error", "Debes ingresar los datos de envío y de pago.", "error");
+      return of(this.venta);
+    }
+    else {
+      this.venta.carrito = CARRITO.slice(-1)[0];
+
+      (VENTAS.length === 0) ? this.venta.id = 0 : this.venta.id = VENTAS.slice(-1)[0].id + 1;
+
+      VENTAS.push(this.venta);
+
+      CARRITO.pop();
+
+      return of(this.venta);
+    }
+  }
 }
