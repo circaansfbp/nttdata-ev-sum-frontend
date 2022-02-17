@@ -45,7 +45,7 @@ export class CarritoComponent implements OnInit {
         data => {
           if (data) {
             swal.fire("Productos agregados!", "Ahora, ingresa los datos solicitados para gestionar el envío", "success");
-            this.router.navigate(['/venta/form-envio']);
+            this.router.navigate(['/venta']);
           }
         }
       );

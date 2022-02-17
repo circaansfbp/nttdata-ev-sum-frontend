@@ -6,8 +6,7 @@ import { CarritoComponent } from './component/carrito/carrito.component';
 import { ProductoFormComponent } from './component/producto/formulario/producto-form.component';
 import { ProductoComponent } from './component/producto/producto.component';
 import { ProfileComponent } from './component/profile/profile.component';
-import { FormularioEnvioComponent } from './component/venta/formulario-envio/formulario-envio.component';
-import { FormularioPagoComponent } from './component/venta/formulario-pago/formulario-pago.component';
+import { VentaComponent } from './component/venta/venta.component';
 
 
 const routes: Routes = [
@@ -16,21 +15,10 @@ const routes: Routes = [
   { path: 'productos/form', component: ProductoFormComponent,canActivate: [AuthGuard] },
   { path: 'productos/editar/:id', component: ProductoFormComponent,canActivate: [AuthGuard] },
   { path: 'carrito', component: CarritoComponent,canActivate: [AuthGuard] },
-  { path: 'venta/form-envio', component: FormularioEnvioComponent,canActivate: [AuthGuard] },
-  { path: 'venta/form-pago', component: FormularioPagoComponent,canActivate: [AuthGuard] },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'signIn',
-    component: LoginComponent
-  },
-  {
-    path: '**',
-    redirectTo: 'signIn'
-  }
+  { path: 'profile',component: ProfileComponent,canActivate: [AuthGuard]},
+  { path: 'signIn', component: LoginComponent },
+  { path: '**',redirectTo: 'signIn'},
+  { path: 'venta', component: VentaComponent,canActivate: [AuthGuard] }
 ];
 
 @NgModule({

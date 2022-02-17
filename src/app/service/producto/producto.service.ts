@@ -43,7 +43,7 @@ export class ProductoService {
 
   // Actualizar un producto
   updateProducto(productoToUpdate: Producto): Observable<Producto[]>{
-    PRODUCTOS.map((producto, index) => {
+    PRODUCTOS.map((producto: Producto) => {
       if (Object.entries(producto) === Object.entries(productoToUpdate)) {
         producto.nombre = productoToUpdate.nombre;
         producto.precio = productoToUpdate.precio;
