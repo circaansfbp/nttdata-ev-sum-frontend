@@ -11,4 +11,16 @@
   <div class="row justify-content-center">
     <app-formulario-pago></app-formulario-pago>
   </div>
+
+  <div class="row justify-content-center mb-4" id="bottom-div">
+    <div class="col-6 text-start">
+      <strong>Total a pagar:</strong>
+      <p>{{total}}</p>
+    </div>
+
+    <div class="col-6 text-end">
+      <button class="btn btn-success me-2" (click)="buy()" >Finalizar compra</button>
+      <button class="btn btn-danger ms-2" (click)="cancelarCompra()">Cancelar</button>
+    </div>
+  </div>
 </div>
