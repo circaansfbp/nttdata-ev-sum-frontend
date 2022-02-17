@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Carrito } from 'src/app/class/carrito';
 import { Producto } from 'src/app/class/producto';
+import { PRODUCTOS } from '../producto/producto.json';
 import { CARRITO } from './carrito.json';
 
 @Injectable({
@@ -56,11 +57,29 @@ export class CarritoapiService {
   }
 
   payment(cantidadProductos: number): Observable<Carrito[]> {
-    this.carrito.id = (CARRITO.length === 0) ? 1 : CARRITO.slice(-1)[0].id;
     this.carrito.cantidad = cantidadProductos;
 
-    CARRITO.push(this.carrito);
+    // Si el carrito ya existe, se modifica
+    if (CARRITO.length === 0) {
+      this.carrito.id = 1;
+      CARRITO.push(this.carrito);
 
-    return of(CARRITO);
+      return of(CARRITO);
+    } 
+    else if (CARRITO.length === 1) {
+      CARRITO.pop();
+      CARRITO.push(this.carrito);
+      
+      return of(CARRITO);
+    } 
+    
+    // No sé si esto es necesario
+    else {
+      this.carrito.id = CARRITO.slice(-1)[0].id;
+      CARRITO.pop();
+      CARRITO.push(this.carrito);
+      
+      return of(CARRITO);
+    }
   }
 }
