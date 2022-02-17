@@ -62,6 +62,5 @@ export class CarritoapiService {
     CARRITO.push(this.carrito);
 
     return of(CARRITO);
-
   }
 }
