@@ -1,179 +1,194 @@
-<div class="container mt-4 col-6">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Datos envío </h3>
-      </div>
-  
-      <div class="card-body">
-        <form>
-          <div class="form-group row mb-3 input-form">
-            <label for="" class="col-form-label col-sm-3">País</label>
-            <div class="col-sm-9">
-              <input
-                ngModel
-                #pais="ngModel"
-                type="text"
-                class="form-control"
-                name="pais"
-                id="pais"
-                required
-                minlength="3"
-              />
-  
-              <!-- Manejo de errores -->
-              <div
-                class="mt-2"
-                *ngIf="
-                  (pais.touched || pais.dirty) &&
-                  !pais.valid
-                "
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Datos de envío</h3>
+    </div>
+
+    <div class="card-body">
+      <form>
+        <div class="form-group row mb-3 input-form">
+          <label for="" class="col-form-label col-sm-3">País</label>
+          <div class="col-sm-9">
+            <input
+              ngModel
+              #pais="ngModel"
+              type="text"
+              class="form-control"
+              name="pais"
+              id="pais"
+              required
+              minlength="3"
+              [(ngModel)]="envio.pais"
+              [readOnly]="modificarDatosEnvio"
+            />
+
+            <!-- Manejo de errores -->
+            <div
+              class="mt-2"
+              *ngIf="(pais.touched || pais.dirty) && !pais.valid"
+            >
+              <small *ngIf="pais.errors?.['required']" class="text-danger"
+                >Debes ingresar el nombre del país!</small
               >
-                <small
-                  *ngIf="pais.errors?.['required']"
-                  class="text-danger"
-                  >Debes ingresar el nombre del país!</small
-                >
-                <small
-                  *ngIf="pais.errors?.['minlength']"
-                  class="text-danger"
-                  >El nombre del país debe poseer más de
-                  {{ pais.errors?.['minlength'].requiredLength }}
-                  caracteres!</small
-                >
-              </div>
-            </div>
-          </div>
-          <div class="form-group row mb-3">
-            <label for="" class="col-form-label col-sm-3">Calle</label>
-            <div class="col-sm-9">
-              <input
-                ngModel
-                #calle="ngModel"
-                type="text"
-                class="form-control"
-                name="calle"
-                id="calle"
-                required
-              />
-  
-              <!-- Manejo de errores -->
-              <div class="mt-2">
-                <small
-                  class="text-danger"
-                  *ngIf="
-                    (calle.touched || calle.dirty) &&
-                    !calle.valid
-                  "
-                  >Debes ingresar el  nombre de la calle!</small
-                >
-              </div>
-            </div>
-          </div>
-          <div class="form-group row mb-3">
-            <label for="" class="col-form-label col-sm-3">Ciudad</label>
-            <div class="col-sm-9">
-              <input
-                ngModel
-                #ciudad="ngModel"
-                type="text"
-                class="form-control"
-                name="ciudad"
-                id="ciudad"
-                required
-              />
-  
-              <!-- Manejo de errores -->
-              <div class="mt-2">
-                <small
-                  class="text-danger"
-                  *ngIf="
-                    (codigo.touched || codigo.dirty) &&
-                    !codigo.valid
-                  "
-                  >Debes ingresar la Ciudad!</small
-                >
-              </div>
-            </div>
-          </div>
-          <div class="form-group row mb-3">
-            <label for="" class="col-form-label col-sm-3">Región</label>
-            <div class="col-sm-9">
-              <input
-                ngModel
-                #region="ngModel"
-                type="text"
-                class="form-control"
-                name="region"
-                id="region"
-                required
-                minlength="4"
+              <small *ngIf="pais.errors?.['minlength']" class="text-danger"
+                >El nombre del país debe poseer más de
+                {{ pais.errors?.['minlength'].requiredLength }}
+                caracteres!</small
               >
-  
-              <!-- Manejo de errores -->
-              <div class="mt-2">
-                <small
-                  class="text-danger"
-                  *ngIf="
-                    (region.touched || region.dirty) &&
-                    !region.valid
-                  "
-                  >Debes ingresar el nombre de la región!</small
-                >
-              </div>
             </div>
           </div>
-          <div class="form-group row mb-3">
-            <label for="" class="col-form-label col-sm-3">Código postal</label>
-            <div class="col-sm-9">
-              <input
-                ngModel
-                #codigo="ngModel"
-                type="number"
-                class="form-control"
-                name="codigo"
-                id="codigo"
-                required
-              />
-  
-              <!-- Manejo de errores -->
-              <div class="mt-2">
-                <small
-                  class="text-danger"
-                  *ngIf="
-                    (codigo.touched || codigo.dirty) &&
-                    !codigo.valid
-                  "
-                  >Debes ingresar el código postal!</small
-                >
-              </div>
-            </div>
-          </div>
-          <div class="form-group row mb-3">
-            <div class="col-sm-12 text-center">
-              <button
-                [disabled]="
-                  pais.invalid ||
-                  ciudad.invalid ||
-                  codigo.invalid ||
-                  calle.invalid ||
-                  region.invalid
-                "
-                class="btn btn-danger"
-                type="submit"
-                role="button"
-                
+        </div>
+        <div class="form-group row mb-3">
+          <label for="" class="col-form-label col-sm-3">Calle</label>
+          <div class="col-sm-9">
+            <input
+              ngModel
+              #calle="ngModel"
+              type="text"
+              class="form-control"
+              name="calle"
+              id="calle"
+              required
+              [(ngModel)]="envio.calle"
+              [readOnly]="modificarDatosEnvio"
+            />
+
+            <!-- Manejo de errores -->
+            <div class="mt-2">
+              <small
+                class="text-danger"
+                *ngIf="(calle.touched || calle.dirty) && !calle.valid"
+                >Debes ingresar el nombre de la calle!</small
               >
-               Guardar
-              </button>
             </div>
-            <!-- 
-                          *ngIf="!empleado.id else elseBlock"
-                          <ng-template #elseBlock>
-                          <button class="btn btn-warning" type="submit" role="button" (click)="update()">Actualizar empleado</button>
-                      </ng-template> -->
           </div>
-        </form>
-      </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="" class="col-form-label col-sm-3">Ciudad</label>
+          <div class="col-sm-9">
+            <input
+              ngModel
+              #ciudad="ngModel"
+              type="text"
+              class="form-control"
+              name="ciudad"
+              id="ciudad"
+              required
+              [(ngModel)]="envio.ciudad"
+              [readOnly]="modificarDatosEnvio"
+            />
+
+            <!-- Manejo de errores -->
+            <div class="mt-2">
+              <small
+                class="text-danger"
+                *ngIf="(ciudad.touched || ciudad.dirty) && !ciudad.valid"
+                >Debes ingresar la ciudad!</small
+              >
+            </div>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="" class="col-form-label col-sm-3">Región</label>
+          <div class="col-sm-9">
+            <input
+              ngModel
+              #region="ngModel"
+              type="text"
+              class="form-control"
+              name="region"
+              id="region"
+              required
+              minlength="4"
+              [(ngModel)]="envio.region"
+              [readOnly]="modificarDatosEnvio"
+            />
+
+            <!-- Manejo de errores -->
+            <div class="mt-2">
+              <small
+                class="text-danger"
+                *ngIf="(region.touched || region.dirty) && !region.valid"
+                >Debes ingresar tu región!</small
+              >
+            </div>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="" class="col-form-label col-sm-3">Código postal</label>
+          <div class="col-sm-9">
+            <input
+              ngModel
+              #codigo="ngModel"
+              type="number"
+              class="form-control"
+              name="codigo"
+              id="codigo"
+              required
+              [(ngModel)]="envio.codigoPostal"
+              [readOnly]="modificarDatosEnvio"
+            />
+
+            <!-- Manejo de errores -->
+            <div class="mt-2">
+              <small
+                class="text-danger"
+                *ngIf="(codigo.touched || codigo.dirty) && !codigo.valid"
+                >Debes ingresar el código postal!</small
+              >
+            </div>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <div
+            class="col-sm-12 text-center"
+          >
+            <button
+            *ngIf="!modificarDatosEnvio"
+              (click)="registrarDatosEnvio()"
+              [disabled]="
+                pais.invalid ||
+                ciudad.invalid ||
+                codigo.invalid ||
+                calle.invalid ||
+                region.invalid 
+              "
+              class="btn btn-success me-2"
+              type="submit"
+              role="button"
+            >
+              Guardar
+            </button>
+
+            <button
+            *ngIf="modificarDatosEnvio"
+            (click)="updateDatos()"
+              [disabled]="
+                pais.invalid ||
+                ciudad.invalid ||
+                codigo.invalid ||
+                calle.invalid ||
+                region.invalid
+              "
+              class="btn btn-warning ms-2"
+              type="submit"
+              role="button"
+            >
+              Modificar datos de envío
+            </button>
+          </div>
+
+          <!-- <ng-template #elseBlock>
+            <button
+              class="btn btn-warning"
+              type="submit"
+              role="button"
+            >
+              Modificar datos de envío
+            </button>
+          </ng-template> -->
+        </div>
+      </form>
     </div>
   </div>
-  
+</div>
