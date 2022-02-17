@@ -26,9 +26,6 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
