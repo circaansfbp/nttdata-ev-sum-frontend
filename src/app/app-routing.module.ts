@@ -17,8 +17,9 @@ const routes: Routes = [
   { path: 'carrito', component: CarritoComponent,canActivate: [AuthGuard] },
   { path: 'profile',component: ProfileComponent,canActivate: [AuthGuard]},
   { path: 'signIn', component: LoginComponent },
-  { path: '**',redirectTo: 'signIn'},
-  { path: 'venta', component: VentaComponent,canActivate: [AuthGuard] }
+  { path: 'venta', component: VentaComponent,canActivate: [AuthGuard] },
+  { path: '**',redirectTo: 'signIn'}
+  
 ];
 
 @NgModule({
