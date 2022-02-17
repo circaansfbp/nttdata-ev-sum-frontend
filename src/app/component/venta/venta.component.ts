@@ -11,9 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./venta.component.css']
 })
 export class VentaComponent implements OnInit {
-
-  venta: Venta = new Venta();
-  total: number = CARRITO.slice(-1)[0].precioTotalProducto;
+  total: number = CARRITO.slice(-1)[0]?.precioTotalProducto;
 
   constructor(private router: Router,
     private ventaService: VentaService) { }

@@ -29,19 +29,20 @@ export class VentaService {
   buy(): Observable<Venta> {
     // FALTA AGREGAR FECHA Y VERIFICAR EL TOTAL
 
-    if (!this.venta.datosEnvio || !this.venta.datosPago) {
+    if (this.venta.datosEnvio && this.venta.datosPago) {
       Swal.fire("Error", "Debes ingresar los datos de envío y de pago.", "error");
       return of(this.venta);
     }
+    else {
+      this.venta.carrito = CARRITO.slice(-1)[0];
 
-    this.venta.carrito = CARRITO.slice(-1)[0];
+      (VENTAS.length === 0) ? this.venta.id = 0 : this.venta.id = VENTAS.slice(-1)[0].id + 1;
 
-    (VENTAS.length === 0) ? this.venta.id = 0 : this.venta.id = VENTAS.slice(-1)[0].id + 1;
+      VENTAS.push(this.venta);
 
-    VENTAS.push(this.venta);
+      CARRITO.pop();
 
-    CARRITO.pop();
-
-    return of(this.venta);
+      return of(this.venta);
+    }
   }
 }
