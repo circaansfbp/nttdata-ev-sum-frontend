@@ -15,6 +15,8 @@ export class CarritoComponent implements OnInit {
   productos: Producto[] = [];
   allProductos: any = 0;
 
+  title: string = 'Tus productos'
+
   constructor(private cartApi: CarritoapiService,
     private router: Router) { }
 
