@@ -66,18 +66,23 @@
                 <form>
                   <div class="form-group">
                     <input
+                      ngModel
+                      #cantidad="ngModel"
                       type="number"
                       class="form-control"
                       id="cantidadP"
                       name="cantidad"
+                      required
+                      min="1"
                       [(ngModel)]="producto.cant"
                     />
                   </div>
                 </form>
 
                 <button
+                  [disabled]="cantidad.invalid"
                   id="agregar"
-                  type="button"
+                  type="submit"
                   role="button"
                   class="btn btn-primary me-2"
                   (click)="addToCarrito(producto)"

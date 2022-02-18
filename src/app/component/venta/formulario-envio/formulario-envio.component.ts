@@ -31,7 +31,7 @@ export class FormularioEnvioComponent implements OnInit {
       icon: 'success',
       title: 'Se han guardado los datos de envío!',
       showConfirmButton: false,
-      timer: 2000
+      timer: 1500
     });
   }
 

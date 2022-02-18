@@ -17,7 +17,10 @@
                 </div>
 
                 <div *ngFor="let producto of venta.carrito.productos" id="productos-container" class="row justify-content-center">
-                    <div class="col-5 pt-2">
+                    <div class="col-1 pt-2">
+                        <p>x{{producto.cantidad}}</p>
+                    </div>
+                    <div class="col-4 pt-2">
                         <p>{{producto.nombre}}</p>
                     </div>
                     <div class="col-2 pt-2">

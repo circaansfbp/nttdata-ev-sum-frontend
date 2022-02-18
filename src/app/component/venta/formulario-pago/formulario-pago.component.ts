@@ -29,7 +29,7 @@ export class FormularioPagoComponent implements OnInit {
       icon: 'success',
       title: 'Se han guardado los datos del pago!',
       showConfirmButton: false,
-      timer: 2000
+      timer: 1500
     });
   }
 

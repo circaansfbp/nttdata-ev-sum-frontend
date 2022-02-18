@@ -12,7 +12,7 @@ import swal from 'sweetalert2';
 })
 
 export class CarritoComponent implements OnInit {
-  productos: Producto[] = []
+  productos: Producto[] = [];
   allProductos: any = 0;
 
   constructor(private cartApi: CarritoapiService,
