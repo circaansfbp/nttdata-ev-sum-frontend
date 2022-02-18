@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Carrito } from 'src/app/class/carrito';
 import { Producto } from 'src/app/class/producto';
 import { CarritoapiService } from 'src/app/service/carrito/carritoapi.service';
 import { ProductoService } from 'src/app/service/producto/producto.service';

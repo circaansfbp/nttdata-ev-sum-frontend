@@ -1,0 +1,50 @@
+<div class="container col-8">
+    <div class="card">
+        <div class="card-header mb-4 pt-4">
+            <div class="row text-center my-2">
+                <i class="fas fa-check-circle" id="check-icon"></i>
+            </div>
+            <div class="row text-center">
+                <strong>¡Compra finalizada!</strong>
+                <p>Esta es tu facturación. ¡Gracias por tu preferencia!</p>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row mb-2">
+                <div class="row text-center mb-2">
+                    <h5>Tus productos</h5>
+                </div>
+
+                <div *ngFor="let producto of venta.carrito.productos" id="productos-container" class="row justify-content-center">
+                    <div class="col-5 pt-2">
+                        <p>{{producto.nombre}}</p>
+                    </div>
+                    <div class="col-2 pt-2">
+                        <p>{{producto.precio | currency: 'CLP'}} c/u</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row py-4 cont">
+                <div class="row text-center mb-2">
+                    <h5>Datos de envío</h5>
+                </div>
+                <div class="row text-center">
+                    <strong>Titular</strong>
+                    <p>{{venta.datosPago.nombreTitular}}</p>
+                    <strong>Dirección</strong>
+                    <p>{{venta.datosEnvio.calle}}, {{venta.datosEnvio.ciudad}}, {{venta.datosEnvio.region}}, {{venta.datosEnvio.pais}}</p>
+                    <p>{{venta.datosEnvio.codigoPostal}}</p>
+                </div>
+            </div>
+
+            <div class="row py-4 cont">
+                <div class="row text-center">
+                    <h5>Total</h5>
+                    <strong>{{venta.totalVenta | currency: 'CLP'}}</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

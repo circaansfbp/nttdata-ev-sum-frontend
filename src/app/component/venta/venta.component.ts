@@ -26,7 +26,7 @@ export class VentaComponent implements OnInit {
         if (data) {
           console.log(data);
           Swal.fire("Compra finalizada!", "Su compra ha sido recibida y registrada correctamente.", "success");
-          // REDIRECCIONAR A LA BOLETA
+          this.router.navigate(['/boleta']);
         }
       }
     )
