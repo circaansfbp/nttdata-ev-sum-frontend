@@ -6,6 +6,8 @@ import { ProductoComponent } from './producto.component';
 import { ProductoService } from 'src/app/service/producto/producto.service';
 import { Producto } from 'src/app/class/producto';
 import { NgModule } from '@angular/core';
+import { FiltroPalabrasPipe } from 'src/app/pipes/filtro-palabras.pipe';
+import { CarritoapiService } from 'src/app/service/carrito/carritoapi.service';
 
 class MockProductoService {
   getProductos(): Observable<any> {
@@ -56,13 +58,12 @@ describe('ProductoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductoComponent ],
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      declarations: [ ProductoComponent, FiltroPalabrasPipe, FiltroPalabrasPipe],
+      imports: [HttpClientTestingModule,RouterTestingModule ],
       providers: [
-        {
-          provide: ProductoService,
-          useClass: MockProductoService
-        }
+        CarritoapiService,
+        ProductoService
+       
       ]
     })
     .compileComponents();
