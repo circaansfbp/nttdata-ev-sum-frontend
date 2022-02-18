@@ -14,6 +14,8 @@ import swal from 'sweetalert2';
 export class ProductoComponent implements OnInit {
   productList: any;
 
+  filterPalabra = '';
+  filterCategoria = '';
   title: string = 'Listado de productos';
 
   // Listado de productos

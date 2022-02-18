@@ -24,6 +24,8 @@ import { CarritoComponent } from './component/carrito/carrito.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
+import { FiltroPalabrasPipe } from './pipes/filtro-palabras.pipe';
+import { FiltroCategoriaPipe } from './pipes/filtro-categoria.pipe';
 
 
 
@@ -40,7 +42,9 @@ import { environment } from 'src/environments/environment';
     VentaComponent,
     FormularioPagoComponent,
     FormularioEnvioComponent,
-    ProfileComponent
+    ProfileComponent,
+    FiltroPalabrasPipe,
+    FiltroCategoriaPipe
 
 
   ],

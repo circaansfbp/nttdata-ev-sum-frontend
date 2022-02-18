@@ -14,19 +14,19 @@
       <!-- Filtrar por palabra clave -->
       <div class="row mb-4">
         <div class="col-6 form-group">
-          <label form="nombre">Filtrar por nombre:</label>
+          <label form="filterPalabra">Filtrar por nombre:</label>
           <input
             type="text"
-            [(ngModel)]="nombre"
-            name="nombre"
+            [(ngModel)]="filterPalabra"
+            name="filterPalabra"
             class="form-control"
           />
         </div>
 
         <!-- Filtrar por categoría -->
         <div class="col-6">
-          <label form="categoria">Filtrar por categoría:</label>
-          <select class="form-select" [(ngModel)]="categoria" name="categoria">
+          <label form="filterCategoria">Filtrar por categoría:</label>
+          <select class="form-select" [(ngModel)]="categoria" name="filterCategoria">
             <option *ngFor="let cat of categorias" value="{{ cat }}">
               {{ cat }}
             </option>
@@ -52,8 +52,8 @@
             <tr
               *ngFor="
                 let producto of productos
-                  | filter: categoria
-                  | filter: nombre
+                  | filter: filterCategoria
+                  | filter: filterPalabra
                   | paginate: { itemsPerPage: 2, currentPage: p }
               "
             >
