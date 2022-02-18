@@ -26,7 +26,7 @@
         <!-- Filtrar por categoría -->
         <div class="col-6">
           <label form="filterCategoria">Filtrar por categoría:</label>
-          <select class="form-select" [(ngModel)]="categoria" name="filterCategoria">
+          <select class="form-select" [(ngModel)]="filterCategoria" name="filterCategoria">
             <option *ngFor="let cat of categorias" value="{{ cat }}">
               {{ cat }}
             </option>
