@@ -52,9 +52,9 @@
             <tr
               *ngFor="
                 let producto of productos
-                  | filter: filterCategoria
-                  | filter: filterPalabra
-                  | paginate: { itemsPerPage: 2, currentPage: p }
+                  | filtroPaginacion: page:filterPalabra
+                  | filter : filterCategoria
+                 
               "
             >
               <td>{{ producto.id }}</td>
@@ -70,7 +70,7 @@
                       class="form-control"
                       id="cantidadP"
                       name="cantidad"
-                      [(ngModel)]="producto.cant"
+                      [(ngModel)]="producto.cantidad"
                     />
                   </div>
                 </form>
@@ -104,13 +104,15 @@
                 </button>
               </td>
             </tr>
+            
+           
           </tbody>
         </table>
+        <button class="btn btn-primary" (click)="prevPage()">Anterior</button>&nbsp;
+        <button class="btn btn-primary" (click)="nextPage()">Siguiente
 
-        <pagination-controls
-          class="text-center"
-          (pageChange)="p = $event"
-        ></pagination-controls>
+        </button>
+      
       </div>
     </div>
   </div>

@@ -16,6 +16,7 @@ export class ProductoComponent implements OnInit {
 
   filterPalabra = '';
   filterCategoria = '';
+  filterPaginacion = '';
   title: string = 'Listado de productos';
 
   // Listado de productos
@@ -24,6 +25,7 @@ export class ProductoComponent implements OnInit {
   // Paginación
   totalItems: number = 0;
   p: number = 1;
+  public page: number=0;
 
   // Filtros
   categoria: string = "";
@@ -97,4 +99,13 @@ export class ProductoComponent implements OnInit {
     this.cartApi.addToCart(producto, producto.cant);
     producto.cant = 0;
   }
+   nextPage(){
+     this.page+=5;
+   }
+
+   prevPage(){
+     if(this.page>0){
+       this.page-=5;
+     }
+   }
 }

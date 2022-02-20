@@ -26,6 +26,7 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
 import { FiltroPalabrasPipe } from './pipes/filtro-palabras.pipe';
 import { FiltroCategoriaPipe } from './pipes/filtro-categoria.pipe';
+import { FiltroPaginacionPipe } from './pipes/filtro-paginacion.pipe';
 
 
 
@@ -44,7 +45,8 @@ import { FiltroCategoriaPipe } from './pipes/filtro-categoria.pipe';
     FormularioEnvioComponent,
     ProfileComponent,
     FiltroPalabrasPipe,
-    FiltroCategoriaPipe
+    FiltroCategoriaPipe,
+    FiltroPaginacionPipe
 
 
   ],
