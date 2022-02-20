@@ -55,4 +55,12 @@ describe('ProductoComponent', () => {
             }
         )
     });
+
+    it('Comprobar que el metodo getCategorias retorna los datos', () => {
+        service.getCategorias().subscribe(
+            data => {
+                expect(component.categorias.length).toEqual(5);
+            }
+        )
+    });
 });
