@@ -14,8 +14,10 @@ import swal from 'sweetalert2';
 export class ProductoComponent implements OnInit {
   productList: any;
 
+  page: number = 0;
   filterPalabra = '';
   filterCategoria = '';
+  pagination = '';
   title: string = 'Listado de productos';
 
   // Listado de productos
@@ -96,5 +98,15 @@ export class ProductoComponent implements OnInit {
   addToCarrito(producto: any) {
     this.cartApi.addToCart(producto, producto.cant);
     producto.cant = 0;
+  }
+
+  nextPage(){
+    this.page +=5;
+  }
+
+  prevPage(){
+    if(this.page > 0){
+      this.page -=5;
+    }
   }
 }

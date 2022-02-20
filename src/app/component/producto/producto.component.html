@@ -4,9 +4,7 @@
       <h3 class="card-title">{{ title }}</h3>
 
       <div class="text-start">
-        <a type="button" class="btn btn-primary" routerLink="/productos/form"
-          >Agregar producto</a
-        >
+        <a type="button" class="btn btn-primary" routerLink="/productos/form">Agregar producto</a>
       </div>
     </div>
 
@@ -15,12 +13,7 @@
       <div class="row mb-4">
         <div class="col-6 form-group">
           <label form="filterPalabra">Filtrar por nombre:</label>
-          <input
-            type="text"
-            [(ngModel)]="filterPalabra"
-            name="filterPalabra"
-            class="form-control"
-          />
+          <input type="text" [(ngModel)]="filterPalabra" name="filterPalabra" class="form-control" />
         </div>
 
         <!-- Filtrar por categoría -->
@@ -49,14 +42,14 @@
           </thead>
 
           <tbody>
-            <tr
-              *ngFor="
+            <tr *ngFor="
                 let producto of productos
-                  | filter: filterCategoria
-                  | filter: filterPalabra
-                  | paginate: { itemsPerPage: 2, currentPage: p }
-              "
-            >
+                | pagination: page
+                | filter: filterCategoria
+                | filter: filterPalabra
+
+
+            ">
               <td>{{ producto.id }}</td>
               <td>{{ producto.nombre }}</td>
               <td>{{ producto.precio }}</td>
@@ -65,52 +58,36 @@
               <td>
                 <form>
                   <div class="form-group">
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="cantidadP"
-                      name="cantidad"
-                      [(ngModel)]="producto.cant"
-                    />
+                    <input type="number" class="form-control" id="cantidadP" name="cantidad"
+                      [(ngModel)]="producto.cantidad" />
                   </div>
                 </form>
 
-                <button
-                  id="agregar"
-                  type="button"
-                  role="button"
-                  class="btn btn-primary me-2"
-                  (click)="addToCarrito(producto)"
-                >
+                <button id="agregar" type="button" role="button" class="btn btn-primary me-2"
+                  (click)="addToCarrito(producto)">
                   Agregar
                 </button>
               </td>
               <td>
-                <button
-                  type="button"
-                  role="button"
-                  class="btn btn-warning me-2"
-                  [routerLink]="['/productos/editar/', producto.id]"
-                >
+                <button type="button" role="button" class="btn btn-warning me-2"
+                  [routerLink]="['/productos/editar/', producto.id]">
                   Editar
                 </button>
-                <button
-                  type="button"
-                  role="button"
-                  class="btn btn-danger ms-2"
-                  (click)="deleteProducto(producto.id)"
-                >
+                <button type="button" role="button" class="btn btn-danger ms-2" (click)="deleteProducto(producto.id)">
                   Eliminar
                 </button>
               </td>
             </tr>
           </tbody>
         </table>
-
-        <pagination-controls
-          class="text-center"
-          (pageChange)="p = $event"
-        ></pagination-controls>
+        <button class="btn btn-primary" (click)="prevPage()">
+          Anterior
+        </button>
+        &nbsp;
+        <button class="btn btn-primary" (click)="nextPage()">
+          Siguiente
+        </button>
+        <pagination-controls class="text-center" (pageChange)="p = $event"></pagination-controls>
       </div>
     </div>
   </div>

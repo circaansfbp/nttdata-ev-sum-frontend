@@ -58,15 +58,18 @@ describe('ProductoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductoComponent, FiltroPalabrasPipe, FiltroPalabrasPipe],
-      imports: [HttpClientTestingModule,RouterTestingModule ],
+      declarations: [ProductoComponent, FiltroPalabrasPipe, FiltroPalabrasPipe],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [
-        CarritoapiService,
-        ProductoService
-       
+        {
+          provide: ProductoService,
+          useClass: MockProductoService
+        }
+
+
       ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
