@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/class/producto';
 import { CarritoapiService } from 'src/app/service/carrito/carritoapi.service';
+import { PRODUCTOS } from 'src/app/service/producto/producto.json';
 import { ProductoService } from 'src/app/service/producto/producto.service';
 
 import swal from 'sweetalert2';

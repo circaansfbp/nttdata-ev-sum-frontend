@@ -2,36 +2,36 @@ import { Producto } from "src/app/class/producto";
 
 export const PRODUCTOS: Producto[] = [
         {
-                id: 1, nombre: 'shampoo anti-caida', precio: 2000, categoria: 'Cuidado Personal', descripcion: 'shampoo para evitar la perdida de cabello',
+                id: 1, img: '../../../assets/img/shampoo.jpg', nombre: 'Shampoo Pro-V', precio: 6099, categoria: 'Cuidado Personal', descripcion: 'Shampoo Pantene Pro-V, 700 ml. Ayuda a reparar el daño, cabello largo y fuerte. Fórmula con Pro-Vitaminas.',
         },
         {
-                id: 2, nombre: 'Chocolate', precio: 1500, categoria: 'Dulces', descripcion: 'base cacao 60%',
+                id: 2, img: '../../../assets/img/trencito.jpg', nombre: 'Chocolate Trencito', precio: 1720, categoria: 'Dulces', descripcion: 'Barra de chocolate, 150 grs. Marca: Nestlé.',
         },
         {
-                id: 3, nombre: 'jabon hipoalergenico', precio: 2500, categoria: 'Cuidado Personal', descripcion: 'jabon para el cuerpecito',
+                id: 3, img: '../../../assets/img/jabon-liquido.jpg', nombre: 'Jabón líquido', precio: 1849, categoria: 'Cuidado Personal', descripcion: 'Jabón líquido dermo care cremoso, pph neutro. 1L, marca: Simonds.',
         },
         {
-                id: 4, nombre: 'chocolate de almendras', precio: 2000, categoria: 'Dulces', descripcion: 'chocolate con almendras',
+                id: 4, img: '../../../assets/img/shane-nuss.jpg', nombre: 'Chocolate de leche', precio: 3599, categoria: 'Dulces', descripcion: 'Barra de chocolate con almendras, Sahne Nuss, 250 grs. Marca: Nestlé.',
         },
         {
-                id: 5, nombre: 'galleta de vino', precio: 500, categoria: 'Dulces', descripcion: 'galletas que no curan',
+                id: 5, img: '../../../assets/img/galletas-de-vino.jpg', nombre: 'Galletas de vino', precio: 669, categoria: 'Dulces', descripcion: 'Galletas de vino, 160 grs. Marca: Costa.',
         },
         {
-                id: 6, nombre: 'bolsa de basura con cierre facil', precio: 3000, categoria: 'Limpieza', descripcion: 'se cierra solita',
+                id: 6, img: '../../../assets/img/bolsa-de-basura.jpg', nombre: 'Bolsas de basura', precio: 1169, categoria: 'Limpieza', descripcion: 'Tamaño mediano, 10 unidades de 70x90 cm. 100% reciclada. Marca: Virutex.',
         },
         {
-                id: 7, nombre: 'Cat chow delimix', precio: 2890, categoria: 'Mascotas', descripcion: 'Irresistible para tus gatitos',
+                id: 7, img: '../../../assets/img/delimix.jpg', nombre: 'Alimento para gato', precio: 4290, categoria: 'Mascotas', descripcion: 'Para gatos adultos, Cat Chow delimix, 1 kg. 32% de proteína con carne de pollo, res y salmón.',
         },
         {
-                id: 8, nombre: 'Alimento perro adulto Masterdog 15kg', precio: 22090, categoria: 'Mascotas', descripcion: 'Irresistible para tus canes',
+                id: 8, img: '../../../assets/img/master-dog.jpg', nombre: 'Alimento para perro', precio: 22090, categoria: 'Mascotas', descripcion: 'Para perros adultos, carne, 15 kg. Con proteínas de alta calidad.',
         },
         {
-                id: 9, nombre: 'Leche descremada', precio: 1990, categoria: 'Lácteos', descripcion: 'Sin lactosa, 1L, Colun',
+                id: 9, img: '../../../assets/img/leche-descremada.jpg', nombre: 'Pack leche descremada', precio: 9588, categoria: 'Lácteos', descripcion: 'Pack de 12 unidades, leche descremada 1L. Marca: Cuisine & Co.',
         },
         {
-                id: 10, nombre: 'Mantequilla', precio: 2390, categoria: 'Lácteos', descripcion: 'Con sal, 250g',
+                id: 10, img: '../../../assets/img/mantequilla.jpg', nombre: 'Mantequilla', precio: 2349, categoria: 'Lácteos', descripcion: 'Pan de mantequilla sin sal, 250 grs. Libre de sellos. Marca: Soprole.',
         },
         {
-                id: 11, nombre: 'Yoghurt natural', precio: 360, categoria: 'Lácteos', descripcion: 'No endulzado, 120g, Colun',
+                id: 11, img: '../../../assets/img/yoghurt.jpg', nombre: 'Yoghurt natural', precio: 369, categoria: 'Lácteos', descripcion: 'Yoghurt batido natural, 155 grs. Sin azúcar añadida, libre de sellos. Marca: Soprole.',
         },
 ]
