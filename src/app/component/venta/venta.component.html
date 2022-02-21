@@ -1,7 +1,10 @@
 <div class="container col-8">
   <div class="row text-center mx-4 mt-4" id="alerta">
     <strong class="mt-2">Ya casi finalizas el proceso!</strong>
-    <p>Por favor, continúa ingresando los siguientes datos para finalizar tu compra.</p>
+    <p>
+      Por favor, continúa ingresando los siguientes datos para finalizar tu
+      compra.
+    </p>
   </div>
 
   <div class="row justify-content-center">
@@ -13,14 +16,31 @@
   </div>
 
   <div class="row justify-content-center mb-4" id="bottom-div">
-    <div class="col-6 text-start">
+    <div class="col-3 text-start">
       <strong>Total a pagar:</strong>
-      <p>{{total}}</p>
+      <p>{{ total }}</p>
+    </div>
+
+    <div class="col-3">
+      <div class="form-group">
+        <input
+          type="number"
+          class="form-control"
+          name="total"
+          id="total"
+          ngModel
+          #totalPagar="ngModel"
+        />
+      </div>
     </div>
 
     <div class="col-6 text-end">
-      <button class="btn btn-success me-2" (click)="buy()" >Finalizar compra</button>
-      <button class="btn btn-danger ms-2" (click)="cancelarCompra()">Cancelar</button>
+      <button [disabled]="totalPagar.value < total" class="btn btn-success me-2" (click)="buy()">
+        Finalizar compra
+      </button>
+      <button class="btn btn-danger ms-2" (click)="cancelarCompra()">
+        Cancelar
+      </button>
     </div>
   </div>
 </div>

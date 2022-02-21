@@ -24,12 +24,14 @@ import { CarritoComponent } from './component/carrito/carrito.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
-import { FiltroPalabrasPipe } from './pipes/filtro-palabras.pipe';
-import { FiltroCategoriaPipe } from './pipes/filtro-categoria.pipe';
+
+
+
+
+import { BoletaComponent } from './component/boleta/boleta.component';
 import { FiltroPaginacionPipe } from './pipes/filtro-paginacion.pipe';
-
-
-
+import { FiltroCategoriaPipe } from './pipes/filtro-categoria.pipe';
+import { FiltroPalabrasPipe } from './pipes/filtro-palabras.pipe';
 
 
 @NgModule({
@@ -46,7 +48,8 @@ import { FiltroPaginacionPipe } from './pipes/filtro-paginacion.pipe';
     ProfileComponent,
     FiltroPalabrasPipe,
     FiltroCategoriaPipe,
-    FiltroPaginacionPipe
+    FiltroPaginacionPipe,
+    BoletaComponent
 
 
   ],

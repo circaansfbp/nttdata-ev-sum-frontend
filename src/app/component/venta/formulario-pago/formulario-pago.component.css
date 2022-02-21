@@ -2,3 +2,14 @@
     max-width: 20%;
     height: auto;
 }
+
+.relative {
+    position: relative;
+}
+
+img {
+    position: absolute;
+    max-width: 4.375rem;
+    left: 3rem;
+    bottom: -1.5rem;
+}

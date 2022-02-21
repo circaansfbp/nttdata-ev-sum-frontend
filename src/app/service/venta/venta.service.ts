@@ -20,29 +20,47 @@ export class VentaService {
   addEnvio(datosEnvio: Envio) {
     this.venta.datosEnvio = datosEnvio;
   }
-
+  
   // Para añadir el pago
   addPago(datosPago: Pago) {
     this.venta.datosPago = datosPago;
   }
 
   buy(): Observable<Venta> {
-    // FALTA AGREGAR FECHA Y VERIFICAR EL TOTAL
+    if (CARRITO.length === 0) {
+      Swal.fire("Error", "No existen productos en el carrito!", "error");
+      return of(this.venta);
+    }
 
-    if (this.venta.datosEnvio && this.venta.datosPago) {
+    if (!this.venta.datosEnvio || !this.venta.datosPago) {
       Swal.fire("Error", "Debes ingresar los datos de envío y de pago.", "error");
       return of(this.venta);
     }
-    else {
-      this.venta.carrito = CARRITO.slice(-1)[0];
 
-      (VENTAS.length === 0) ? this.venta.id = 0 : this.venta.id = VENTAS.slice(-1)[0].id + 1;
+    // Para agregar la fecha de compra
+    const today = new Date();
+    const dia = String(today.getDate()).padStart(2, '0');
+    const mes = String(today.getMonth() + 1).padStart(2, '0');
+    const anio = String(today.getFullYear());
+    this.venta.fechaVenta = `${dia}/${mes}/${anio}`;
 
-      VENTAS.push(this.venta);
+    // Para agregar el carrito a la venta
+    this.venta.carrito = CARRITO.slice(-1)[0];
 
-      CARRITO.pop();
+    // Agrega el total a la venta
+    this.venta.totalVenta = CARRITO.slice(-1)[0].precioTotalProducto;
 
-      return of(this.venta);
-    }
+    // Agrega el ID
+    (VENTAS.length === 0) ? this.venta.id = 1 : this.venta.id = VENTAS.slice(-1)[0].id + 1;
+
+    // Registra la venta y vacía el carrito
+    VENTAS.push(this.venta);
+    // CARRITO.pop();
+
+    return of(this.venta);
+  }
+
+  resetVenta(): void {
+    this.venta = new Venta();
   }
 }

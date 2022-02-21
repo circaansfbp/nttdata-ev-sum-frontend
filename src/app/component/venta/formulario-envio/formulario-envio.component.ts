@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Envio } from 'src/app/class/envio';
-import { Venta } from 'src/app/class/venta';
 import { VentaService } from 'src/app/service/venta/venta.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-formulario-envio',
@@ -25,6 +25,14 @@ export class FormularioEnvioComponent implements OnInit {
     this.modificarDatosEnvio = !this.modificarDatosEnvio
     
     this.ventaService.addEnvio(this.envio);
+
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Se han guardado los datos de envío!',
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 
   updateDatos() { this.modificarDatosEnvio = !this.modificarDatosEnvio }

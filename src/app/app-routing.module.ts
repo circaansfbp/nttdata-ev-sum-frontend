@@ -7,6 +7,7 @@ import { ProductoFormComponent } from './component/producto/formulario/producto-
 import { ProductoComponent } from './component/producto/producto.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { VentaComponent } from './component/venta/venta.component';
+import { BoletaComponent } from './component/boleta/boleta.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'profile',component: ProfileComponent,canActivate: [AuthGuard]},
   { path: 'signIn', component: LoginComponent },
   { path: 'venta', component: VentaComponent,canActivate: [AuthGuard] },
+  { path: 'boleta', component: BoletaComponent },
   { path: '**',redirectTo: 'signIn'}
 
 ];
