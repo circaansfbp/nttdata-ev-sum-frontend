@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Producto } from 'src/app/class/producto';
 import { CarritoapiService } from 'src/app/service/carrito/carritoapi.service';
 import { ProductoService } from 'src/app/service/producto/producto.service';
+import Swal from 'sweetalert2';
 
 import swal from 'sweetalert2';
 
@@ -73,31 +74,6 @@ export class ProductoComponent implements OnInit {
     );
   }
 
-  // Eliminar un producto
-  // deleteProducto(idProducto: number): void {
-  //   swal.fire({
-  //     title: '¿Estás seguro de que quieres eliminar el producto?',
-  //     text: "¡Esta acción es irreversible!",
-  //     icon: 'warning',
-  //     showCancelButton: true,
-  //     confirmButtonColor: '#2b8a3e',
-  //     cancelButtonColor: '#c92a2a',
-  //     confirmButtonText: 'Sí, elimínalo!'
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       this.productoService.deleteProducto(idProducto);
-
-  //       swal.fire(
-  //         '¡Producto eliminado!',
-  //         'El producto ha sido eliminado exitosamente.',
-  //         'success'
-  //       );
-
-  //       this.getProductos();
-  //     }
-  //   });
-  // }
-
   // Añadir un producto al carrito
   addToCarrito(producto: any) {
     if (this.cantidadCarrito <= 0) {
@@ -106,6 +82,14 @@ export class ProductoComponent implements OnInit {
 
     this.cartApi.addToCart(producto, this.cantidadCarrito);
     this.cantidadCarrito = 0;
+
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Producto(s) agregados correctamente!',
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 
   nextPage() {
