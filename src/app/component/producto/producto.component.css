@@ -2,3 +2,15 @@
     display: flex;
     justify-content: space-between;
 }
+
+.form-control.ng-touched.ng-invalid {
+    border: 1px solid #ced4da;
+}
+
+img {
+    max-width: 12.5rem;
+}
+
+strong {
+    font-size: 1.3rem;
+}

@@ -34,7 +34,106 @@
         </div>
       </div>
 
-      <div class="table-responsive">
+      <div class="row justify-content-center">
+        <div
+          class="card col-4 my-4 mx-4"
+          *ngFor="
+            let producto of productos
+              | filter: categoria
+              | filter: nombre
+              | paginate: { itemsPerPage: 2, currentPage: p }
+          "
+        >
+          <div class="card-title text-center p-4">
+            <img
+              [src]="producto.img != '' ? producto.img : '../../../assets/img/not-found.png'"
+              alt="Imagen del producto. Shampoo Pantene Pro-V"
+              srcset=""
+            />
+          </div>
+
+          <div class="card-body">
+            <div class="row text-center mb-3">
+              <strong>{{ producto.nombre }}</strong>
+            </div>
+
+            <div class="row">
+              <div class="col-2 text-end">
+                <i class="fas fa-check"></i>
+              </div>
+
+              <div class="col-10 text-start">
+                <p>{{ producto.categoria }}</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-2 text-end">
+                <i class="fas fa-check"></i>
+              </div>
+
+              <div class="col-10 text-start text-justify">
+                <p>{{ producto.descripcion }}</p>
+              </div>
+            </div>
+
+            <div class="row justify-content-center my-3 border-top pt-3">
+              <div class="col-6">
+                <form>
+                  <div class="form-group">
+                    <input
+                      ngModel
+                      #cantidad="ngModel"
+                      type="number"
+                      class="form-control"
+                      id="cantidadP"
+                      name="cantidad"
+                      required
+                      min="1"
+                      [(ngModel)]="producto.cant"
+                    />
+                  </div>
+                </form>
+              </div>
+
+              <div class="col-4">
+                <button
+                  [disabled]="cantidad.invalid"
+                  id="agregar"
+                  type="submit"
+                  role="button"
+                  class="btn btn-primary me-2"
+                  (click)="addToCarrito(producto)"
+                >
+                  Agregar
+                </button>
+              </div>
+            </div>
+
+            <div class="container text-center border-top pt-3">
+              <button
+                type="button"
+                role="button"
+                class="btn btn-warning me-1"
+                [routerLink]="['/productos/editar/', producto.id]"
+              >
+                Editar
+              </button>
+
+              <button
+                type="button"
+                role="button"
+                class="btn btn-danger ms-1"
+                (click)="deleteProducto(producto.id)"
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="table-responsive">
         <table class="table table-bordered table-striped">
           <thead class="table-dark">
             <tr>
@@ -66,18 +165,23 @@
                 <form>
                   <div class="form-group">
                     <input
+                      ngModel
+                      #cantidad="ngModel"
                       type="number"
                       class="form-control"
                       id="cantidadP"
                       name="cantidad"
+                      required
+                      min="1"
                       [(ngModel)]="producto.cant"
                     />
                   </div>
                 </form>
 
                 <button
+                  [disabled]="cantidad.invalid"
                   id="agregar"
-                  type="button"
+                  type="submit"
                   role="button"
                   class="btn btn-primary me-2"
                   (click)="addToCarrito(producto)"
@@ -107,6 +211,9 @@
           </tbody>
         </table>
 
+      </div> -->
+
+      <div class="card-footer pt-4">
         <pagination-controls
           class="text-center"
           (pageChange)="p = $event"

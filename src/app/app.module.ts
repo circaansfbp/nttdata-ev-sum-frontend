@@ -24,9 +24,7 @@ import { CarritoComponent } from './component/carrito/carrito.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
-
-
-
+import { BoletaComponent } from './component/boleta/boleta.component';
 
 
 @NgModule({
@@ -40,7 +38,8 @@ import { environment } from 'src/environments/environment';
     VentaComponent,
     FormularioPagoComponent,
     FormularioEnvioComponent,
-    ProfileComponent
+    ProfileComponent,
+    BoletaComponent
 
 
   ],
