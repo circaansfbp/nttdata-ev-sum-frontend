@@ -1,12 +1,11 @@
+<app-carrusel></app-carrusel>
 <div class="container mt-4">
   <div class="card">
     <div class="card-header">
       <h3 class="card-title">{{ title }}</h3>
 
       <div class="text-start">
-        <a type="button" class="btn btn-primary" routerLink="/productos/form"
-          >Agregar producto</a
-        >
+        <a type="button" class="btn btn-primary" routerLink="/productos/form">Agregar producto</a>
       </div>
     </div>
 
@@ -15,12 +14,7 @@
       <div class="row mb-4">
         <div class="col-6 form-group">
           <label form="filterPalabra">Filtrar por nombre:</label>
-          <input
-            type="text"
-            [(ngModel)]="filterPalabra"
-            name="filterPalabra"
-            class="form-control"
-          />
+          <input type="text" [(ngModel)]="filterPalabra" name="filterPalabra" class="form-control" />
         </div>
 
         <!-- Filtrar por categoría -->

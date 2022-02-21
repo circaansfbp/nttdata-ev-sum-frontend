@@ -49,6 +49,7 @@ export class CarritoapiService {
     const index = this.carrito.productos.findIndex((p: any) => p.id === producto.id)
     this.carrito.productos.splice(index, 1)
     this.productList.next(this.carrito)
+    this.getTotal();
   }
 
   removeCarrito() {
@@ -65,20 +66,20 @@ export class CarritoapiService {
       CARRITO.push(this.carrito);
 
       return of(CARRITO);
-    } 
+    }
     else if (CARRITO.length === 1) {
       CARRITO.pop();
       CARRITO.push(this.carrito);
-      
+
       return of(CARRITO);
-    } 
-    
+    }
+
     // No sé si esto es necesario
     else {
       this.carrito.id = CARRITO.slice(-1)[0].id;
       CARRITO.pop();
       CARRITO.push(this.carrito);
-      
+
       return of(CARRITO);
     }
   }
