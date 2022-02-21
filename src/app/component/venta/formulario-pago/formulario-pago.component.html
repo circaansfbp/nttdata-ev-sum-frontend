@@ -80,7 +80,9 @@
               name="mes"
               id="mes"
               required
-              pattern=".{2,2}"
+              pattern=".{1,2}"
+              min="1"
+              max="12"
               [(ngModel)]="pago.mesExpiracion"
               [readOnly]="modificarDatosPago"
             />
@@ -89,8 +91,14 @@
                 >Debes ingresar el mes de expiración</small
               >
               <small *ngIf="mes.errors?.['pattern']" class="text-danger"
-                >El mes debe contener dos numeros</small
+                >El mes debe contener 1 o 2 numeros</small
               >
+              <small *ngIf="mes.errors?.['max']" class="text-danger"
+                >Ingrese un numero menor o igual a 12</small
+              >
+              <small *ngIf="mes.errors?.['min']" class="text-danger"
+              >Ingrese un numero mayor o igual a 1</small
+            >
             </div>
           </div>
 
@@ -117,7 +125,7 @@
                 >Debes ingresar el año de expiración</small
               >
               <small *ngIf="anio.errors?.['pattern']" class="text-danger"
-                >El ano debe contener dos numeros</small
+                >El año debe contener dos numeros</small
               >
             </div>
           </div>
