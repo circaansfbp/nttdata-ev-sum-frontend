@@ -55,7 +55,7 @@ export class ProductoFormComponent implements OnInit {
   }
 
   // Actualizar un producto
-  public updateProducto(producto: Producto){
+  updateProducto(producto: Producto){
     this.productoService.updateProducto(producto).subscribe(
       data => {
         if (data) {
@@ -64,5 +64,30 @@ export class ProductoFormComponent implements OnInit {
         }
       }
     );
+  }
+
+  // Eliminar un producto
+  deleteProducto(idProducto: number): void {
+    swal.fire({
+      title: '¿Estás seguro de que quieres eliminar el producto?',
+      text: "¡Esta acción es irreversible!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#2b8a3e',
+      cancelButtonColor: '#c92a2a',
+      confirmButtonText: 'Sí, elimínalo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.productoService.deleteProducto(idProducto);
+
+        swal.fire(
+          '¡Producto eliminado!',
+          'El producto ha sido eliminado exitosamente.',
+          'success'
+        );
+
+        this.router.navigate(['/productos']);
+      }
+    });
   }
 }

@@ -2,6 +2,15 @@
   <div class="card">
     <div class="card-header">
       <h3 class="card-title">{{ title }}</h3>
+
+      <button
+                type="button"
+                role="button"
+                class="btn btn-danger ms-1"
+                (click)="deleteProducto(producto.id)"
+              >
+                Eliminar producto
+              </button>
     </div>
 
     <div class="card-body">
