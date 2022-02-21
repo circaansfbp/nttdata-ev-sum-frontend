@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Producto } from 'src/app/class/producto';
 import { CarritoapiService } from 'src/app/service/carrito/carritoapi.service';
-import { PRODUCTOS } from 'src/app/service/producto/producto.json';
 import { ProductoService } from 'src/app/service/producto/producto.service';
 
 import swal from 'sweetalert2';
@@ -15,6 +15,8 @@ export class ProductoComponent implements OnInit {
   productList: any;
 
   page: number = 0;
+  cantidadCarrito: number = 0;
+
   filterPalabra = '';
   filterCategoria = '';
   filterPaginacion = '';
@@ -35,7 +37,8 @@ export class ProductoComponent implements OnInit {
   categorias: string[] = [];
 
   constructor(private productoService: ProductoService,
-    private cartApi: CarritoapiService) { }
+    private cartApi: CarritoapiService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getProductos();
@@ -45,9 +48,9 @@ export class ProductoComponent implements OnInit {
       this.productList = res;
       this.productList.forEach((a: any) => {
 
-        Object.assign(a, { cantidad: a.cantidad, total: a.precio })
-      })
-    })
+        Object.assign(a, { cantidad: a.cantidad, total: a.precio });
+      });
+    });
   }
 
   // Obtener todos los productos
@@ -55,7 +58,8 @@ export class ProductoComponent implements OnInit {
     this.productoService.getProductos().subscribe(
       data => {
         this.productos = data;
-        this.totalItems = this.productos.length;
+        console.log(this.productos);
+        // this.totalItems = this.productos.length;
       }
     )
   }
@@ -70,42 +74,47 @@ export class ProductoComponent implements OnInit {
   }
 
   // Eliminar un producto
-  deleteProducto(idProducto: number): void {
-    swal.fire({
-      title: '¿Estás seguro de que quieres eliminar el producto?',
-      text: "¡Esta acción es irreversible!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#2b8a3e',
-      cancelButtonColor: '#c92a2a',
-      confirmButtonText: 'Sí, elimínalo!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.productoService.deleteProducto(idProducto);
+  // deleteProducto(idProducto: number): void {
+  //   swal.fire({
+  //     title: '¿Estás seguro de que quieres eliminar el producto?',
+  //     text: "¡Esta acción es irreversible!",
+  //     icon: 'warning',
+  //     showCancelButton: true,
+  //     confirmButtonColor: '#2b8a3e',
+  //     cancelButtonColor: '#c92a2a',
+  //     confirmButtonText: 'Sí, elimínalo!'
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       this.productoService.deleteProducto(idProducto);
 
-        swal.fire(
-          '¡Producto eliminado!',
-          'El producto ha sido eliminado exitosamente.',
-          'success'
-        )
+  //       swal.fire(
+  //         '¡Producto eliminado!',
+  //         'El producto ha sido eliminado exitosamente.',
+  //         'success'
+  //       );
 
-        this.getProductos();
-      }
-    });
-  }
+  //       this.getProductos();
+  //     }
+  //   });
+  // }
 
   // Añadir un producto al carrito
   addToCarrito(producto: any) {
-    this.cartApi.addToCart(producto, producto.cant);
-    producto.cant = 0;
-  }
-   nextPage(){
-     this.page+=5;
-   }
+    if (this.cantidadCarrito <= 0) {
+      swal.fire("Valor inválido!", "Debes ingresar una cantidad válida de productos.", "error");
+    }
 
-   prevPage(){
-     if(this.page>0){
-       this.page-=5;
-     }
-   }
+    this.cartApi.addToCart(producto, this.cantidadCarrito);
+    this.cantidadCarrito = 0;
+  }
+
+  nextPage() {
+    this.page += 4;
+  }
+
+  prevPage() {
+    if (this.page > 0) {
+      this.page -= 4;
+    }
+  }
 }
