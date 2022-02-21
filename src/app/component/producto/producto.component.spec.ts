@@ -9,6 +9,8 @@ import { FiltroPalabrasPipe } from 'src/app/pipes/filtro-palabras.pipe';
 import { CarritoapiService } from 'src/app/service/carrito/carritoapi.service';
 import { FiltroPaginacionPipe } from 'src/app/pipes/filtro-paginacion.pipe';
 import { FiltroCategoriaPipe } from 'src/app/pipes/filtro-categoria.pipe';
+import { PRODUCTOS } from 'src/app/service/producto/producto.json';
+
 
 
 
@@ -43,10 +45,16 @@ describe('ProductoComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('delete user', () => {
+    it('delete producto', () => {
         component.ngOnInit();
         expect(service.deleteProducto(1));
     });
+
+    // it('add to carrito', () => {
+    //     Producto pro = new Producto();
+    //     component.ngOnInit();
+    //     expect(service.createProducto());
+    // });
 
     it('Comprobar que el metodo getProductos retorna los datos', () => {
         service.getProductos().subscribe(
