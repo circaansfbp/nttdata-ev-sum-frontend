@@ -31,6 +31,10 @@ import { environment } from 'src/environments/environment';
 import { BoletaComponent } from './component/boleta/boleta.component';
 import { FiltroPaginacionPipe } from './pipes/filtro-paginacion.pipe';
 import { FiltroCategoriaPipe } from './pipes/filtro-categoria.pipe';
+import { CarruselComponent } from './component/carrusel/carrusel.component';
+
+
+
 import { FiltroPalabrasPipe } from './pipes/filtro-palabras.pipe';
 
 
@@ -48,6 +52,7 @@ import { FiltroPalabrasPipe } from './pipes/filtro-palabras.pipe';
     ProfileComponent,
     FiltroPalabrasPipe,
     FiltroCategoriaPipe,
+    CarruselComponent,
     FiltroPaginacionPipe,
     BoletaComponent
 

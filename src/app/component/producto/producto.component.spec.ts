@@ -28,7 +28,7 @@ describe('ProductoComponent', () => {
             providers: [
                 CarritoapiService,
                 ProductoService,
-                  
+
             ]
         })
             .compileComponents();

@@ -1,0 +1,12 @@
+.carrusel{
+  align-content: center;
+  align-items: center;
+}
+
+.slider-img{
+  height: 250px;
+}
+.carousel-item{
+  background-size: auto;
+  max-height: 250px;
+}

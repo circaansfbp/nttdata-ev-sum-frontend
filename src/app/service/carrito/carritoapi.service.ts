@@ -66,20 +66,20 @@ export class CarritoapiService {
       CARRITO.push(this.carrito);
 
       return of(CARRITO);
-    } 
+    }
     else if (CARRITO.length === 1) {
       CARRITO.pop();
       CARRITO.push(this.carrito);
-      
+
       return of(CARRITO);
-    } 
-    
+    }
+
     // No sé si esto es necesario
     else {
       this.carrito.id = CARRITO.slice(-1)[0].id;
       CARRITO.pop();
       CARRITO.push(this.carrito);
-      
+
       return of(CARRITO);
     }
   }
