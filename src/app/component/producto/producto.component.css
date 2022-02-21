@@ -7,10 +7,11 @@
     border: 1px solid #ced4da;
 }
 
+.nombre-producto {
+    font-size: 1.3rem;
+}
+
 img {
     max-width: 12.5rem;
 }
 
-strong {
-    font-size: 1.3rem;
-}
