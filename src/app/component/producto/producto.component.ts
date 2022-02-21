@@ -36,7 +36,6 @@ export class ProductoComponent implements OnInit {
   // Para cargar las categorías
   categorias: string[] = [];
 
-  cantidadCarrito:number=0;
 
   constructor(private productoService: ProductoService,
     private cartApi: CarritoapiService,
