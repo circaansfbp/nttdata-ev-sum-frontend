@@ -41,6 +41,14 @@ describe('ProductoComponent', () => {
         service = TestBed.inject(ProductoService);
     });
 
+    it('Comprobar que el metodo getProductos retorna los datos', () => {
+        service.getProductos().subscribe(
+            data => {
+                expect(component.productos.length).toEqual(PRODUCTOS.length);
+            }
+        )
+    });
+
     it('should be created', () => {
         expect(component).toBeTruthy();
     });
@@ -48,20 +56,6 @@ describe('ProductoComponent', () => {
     it('delete producto', () => {
         component.ngOnInit();
         expect(service.deleteProducto(1));
-    });
-
-    // it('add to carrito', () => {
-    //     Producto pro = new Producto();
-    //     component.ngOnInit();
-    //     expect(service.createProducto());
-    // });
-
-    it('Comprobar que el metodo getProductos retorna los datos', () => {
-        service.getProductos().subscribe(
-            data => {
-                expect(component.productos.length).toEqual(11);
-            }
-        )
     });
 
     it('Comprobar que el metodo getCategorias retorna los datos', () => {
