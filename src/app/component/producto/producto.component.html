@@ -81,7 +81,7 @@
               <div class="col-6">
                 <form>
                   <div class="form-group">
-                    <!-- <input
+                    <input
                       ngModel
                       #cantidad="ngModel"
                       type="number"
@@ -90,23 +90,23 @@
                       name="cantidad"
                       required
                       min="1"
-                      [(ngModel)]="producto.cantidad"
-                    /> -->
+                      [(ngModel)]="cantidadCarrito"
+                    />
                   </div>
                 </form>
               </div>
 
               <div class="col-4">
-                <!-- <button
+                <button
                   [disabled]="cantidad.invalid"
                   id="agregar"
                   type="submit"
                   role="button"
                   class="btn btn-primary me-2"
                   (click)="addToCarrito(producto)"
-                 > -->
-                  <!-- Agregar
-                </button> --> 
+                 >
+                  Agregar
+                </button> 
               </div>
             </div>
 
@@ -125,6 +125,7 @@
                 role="button"
                 class="btn btn-danger ms-1"
                 (click)="deleteProducto(producto.id)"
+                
               >
                 Eliminar
               </button>

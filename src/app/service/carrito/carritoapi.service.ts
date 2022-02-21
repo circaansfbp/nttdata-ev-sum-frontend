@@ -49,6 +49,7 @@ export class CarritoapiService {
     const index = this.carrito.productos.findIndex((p: any) => p.id === producto.id)
     this.carrito.productos.splice(index, 1)
     this.productList.next(this.carrito)
+    this.getTotal();
   }
 
   removeCarrito() {

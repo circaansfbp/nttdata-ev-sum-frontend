@@ -34,6 +34,8 @@ export class ProductoComponent implements OnInit {
   // Para cargar las categorías
   categorias: string[] = [];
 
+  cantidadCarrito:number=0;
+
   constructor(private productoService: ProductoService,
     private cartApi: CarritoapiService) { }
 
@@ -96,8 +98,8 @@ export class ProductoComponent implements OnInit {
 
   // Añadir un producto al carrito
   addToCarrito(producto: any) {
-    this.cartApi.addToCart(producto, producto.cant);
-    producto.cant = 0;
+    this.cartApi.addToCart(producto, this.cantidadCarrito);
+    this.cantidadCarrito = 0;
   }
    nextPage(){
      this.page+=5;
