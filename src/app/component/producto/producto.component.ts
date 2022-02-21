@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Producto } from 'src/app/class/producto';
 import { CarritoapiService } from 'src/app/service/carrito/carritoapi.service';
 import { ProductoService } from 'src/app/service/producto/producto.service';
 import Swal from 'sweetalert2';
-
-import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-producto',
@@ -38,8 +35,7 @@ export class ProductoComponent implements OnInit {
   categorias: string[] = [];
 
   constructor(private productoService: ProductoService,
-    private cartApi: CarritoapiService,
-    private router: Router) { }
+    private cartApi: CarritoapiService) { }
 
   ngOnInit(): void {
     this.getProductos();
@@ -60,7 +56,6 @@ export class ProductoComponent implements OnInit {
       data => {
         this.productos = data;
         console.log(this.productos);
-        // this.totalItems = this.productos.length;
       }
     )
   }
@@ -77,7 +72,8 @@ export class ProductoComponent implements OnInit {
   // Añadir un producto al carrito
   addToCarrito(producto: any) {
     if (this.cantidadCarrito <= 0) {
-      swal.fire("Valor inválido!", "Debes ingresar una cantidad válida de productos.", "error");
+      Swal.fire("Valor inválido!", "Debes ingresar una cantidad válida de productos.", "error");
+      return;
     }
 
     this.cartApi.addToCart(producto, this.cantidadCarrito);

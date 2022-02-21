@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Carrito } from 'src/app/class/carrito';
 import { Producto } from 'src/app/class/producto';
-import { PRODUCTOS } from '../producto/producto.json';
 import { CARRITO } from './carrito.json';
 
 @Injectable({
