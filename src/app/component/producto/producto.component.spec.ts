@@ -59,7 +59,7 @@ describe('ProductoComponent', () => {
     it('Comprobar que el metodo getProductos retorna los datos', () => {
         service.getProductos().subscribe(
             data => {
-                expect(component.productos.length).toEqual(10);
+                expect(component.productos.length).toEqual(11);
             }
         )
     });
