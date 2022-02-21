@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { filter, Observable, of } from 'rxjs';
 import { ProductoComponent } from './producto.component';
 import { ProductoService } from 'src/app/service/producto/producto.service';
 import { Producto } from 'src/app/class/producto';
@@ -10,10 +9,6 @@ import { CarritoapiService } from 'src/app/service/carrito/carritoapi.service';
 import { FiltroPaginacionPipe } from 'src/app/pipes/filtro-paginacion.pipe';
 import { FiltroCategoriaPipe } from 'src/app/pipes/filtro-categoria.pipe';
 import { PRODUCTOS } from 'src/app/service/producto/producto.json';
-
-
-
-
 
 describe('ProductoComponent', () => {
     let component: ProductoComponent;
