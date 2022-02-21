@@ -24,13 +24,18 @@ import { CarritoComponent } from './component/carrito/carrito.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
-import { FiltroPalabrasPipe } from './pipes/filtro-palabras.pipe';
+
+
+
+
+import { BoletaComponent } from './component/boleta/boleta.component';
+import { FiltroPaginacionPipe } from './pipes/filtro-paginacion.pipe';
 import { FiltroCategoriaPipe } from './pipes/filtro-categoria.pipe';
-import { PaginationPipe } from './pipes/pagination.pipe';
 import { CarruselComponent } from './component/carrusel/carrusel.component';
 
 
 
+import { FiltroPalabrasPipe } from './pipes/filtro-palabras.pipe';
 
 
 @NgModule({
@@ -47,8 +52,9 @@ import { CarruselComponent } from './component/carrusel/carrusel.component';
     ProfileComponent,
     FiltroPalabrasPipe,
     FiltroCategoriaPipe,
-    PaginationPipe,
     CarruselComponent,
+    FiltroPaginacionPipe,
+    BoletaComponent
 
 
   ],

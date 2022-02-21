@@ -52,8 +52,8 @@ export class CarritoapiService {
   }
 
   removeCarrito() {
-    this.carrito.productos = []
-    this.productList.next(this.carrito)
+    this.carrito.productos = [];
+    this.productList.next(this.carrito);
   }
 
   payment(cantidadProductos: number): Observable<Carrito[]> {

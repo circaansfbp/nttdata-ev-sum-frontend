@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Carrito } from 'src/app/class/carrito';
 import { Producto } from 'src/app/class/producto';
 import { CarritoapiService } from 'src/app/service/carrito/carritoapi.service';
+import { PRODUCTOS } from 'src/app/service/producto/producto.json';
 import { ProductoService } from 'src/app/service/producto/producto.service';
 
 import swal from 'sweetalert2';
@@ -17,7 +17,7 @@ export class ProductoComponent implements OnInit {
   page: number = 0;
   filterPalabra = '';
   filterCategoria = '';
-  pagination = '';
+  filterPaginacion = '';
   title: string = 'Listado de productos';
 
   // Listado de productos
@@ -99,14 +99,13 @@ export class ProductoComponent implements OnInit {
     this.cartApi.addToCart(producto, producto.cant);
     producto.cant = 0;
   }
+   nextPage(){
+     this.page+=5;
+   }
 
-  nextPage(){
-    this.page +=5;
-  }
-
-  prevPage(){
-    if(this.page > 0){
-      this.page -=5;
-    }
-  }
+   prevPage(){
+     if(this.page>0){
+       this.page-=5;
+     }
+   }
 }

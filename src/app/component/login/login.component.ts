@@ -11,6 +11,6 @@ export class LoginComponent{
   constructor(private router:Router) { }
 
   public signIn(): void {
-    this.router.navigate(['/productos'])
+    this.router.navigate(['/productos']);
   }
 }
